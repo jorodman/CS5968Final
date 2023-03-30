@@ -1,12 +1,18 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <cstring>
 #include <vector>
 #include <functional>
 #include <set>
 #include <unordered_map>
 #include <bits/stdc++.h>
 #include "hashutil.h"
+#include <cctype>
+#include <string>
+#include <cctype>
+#include <clocale>
+#include <cstdlib>
 
 using namespace std;
 
@@ -18,6 +24,12 @@ uint64_t Hash(string k_gram, int function_number)
 {
     const char * key = k_gram.c_str();
     return MurmurHash64A(key, sizeof(key), function_number); 
+}
+
+uint64_t HashVec(vector<uint64_t> val)
+{
+    const void * key = (void *)&val[0];
+    return MurmurHash64A(key, sizeof(key), 874); 
 }
 
 class PlagiarismDetection {
@@ -55,8 +67,9 @@ class PlagiarismDetection {
             while(getline(file, document)){
                 set<string> k_grams;
                 for (int i = 0; i < (int) document.length() - this->K; i += this->K){
-                    // TODO normalize the documents
-                    k_grams.insert(document.substr(i, this->K));
+                    string sub = document.substr(i, this->K);
+                    transform(sub.begin(), sub.end(), sub.begin(), ::tolower);
+                    k_grams.insert(sub);
                 }
                 document_k_grams[document_id] = k_grams; 
                 document_id++;
@@ -125,13 +138,7 @@ class PlagiarismDetection {
                    
                 for(vector<uint64_t> partitionValues : partitions)
                 {
-                    // For now we just use the first partition as the value to be hashed to get the key
-                    uint64_t key = partitionValues[0];
-
-                    // if(hash_table.count(key) > 0)
-                    // {
-                    //     similar_docs
-                    // }
+                    uint64_t key = HashVec(partitionValues);
 
                     hash_table.insert(make_pair(key, doc_id));
                 }
@@ -225,15 +232,32 @@ class PlagiarismDetection {
 };
 
 
-int main(){
-    int chars_per_k_gram = 3;
-    int num_hash_functions = 6;
-    int partition_length = 1;
+int main(int argc, char *argv[]){
+    int chars_per_k_gram = 4;
+    int num_hash_functions = 10;
+    int partition_length = 2;
 
-    PlagiarismDetection * pd = new PlagiarismDetection(chars_per_k_gram, num_hash_functions, partition_length, "temp_data_test.txt");
+    if(argc == 2)
+    {
+        chars_per_k_gram = atoi(argv[1]);
+    }
+    else if(argc == 3)
+    {
+        chars_per_k_gram = atoi(argv[1]);
+        num_hash_functions = atoi(argv[2]);
+    }
+    else if(argc == 4)
+    {
+        chars_per_k_gram = atoi(argv[1]);
+        num_hash_functions = atoi(argv[2]);
+        partition_length = atoi(argv[3]);
+    }
+
+
+    PlagiarismDetection * pd = new PlagiarismDetection(chars_per_k_gram, num_hash_functions, partition_length, "temp_data.txt");
     pd->parse_data();
 
-    pd->print_k_grams();
+    // pd->print_k_grams();
 
     pd->min_hash();
 
@@ -241,7 +265,7 @@ int main(){
 
     pd->partition();
 
-    pd->print_partitions();
+    // pd->print_partitions();
 
     pd->hash_the_sketches();
     pd->find_collisions();
