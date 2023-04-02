@@ -13,6 +13,8 @@
 #include <cctype>
 #include <clocale>
 #include <cstdlib>
+#include <dirent.h>
+#include <sstream>
 
 using namespace std;
 
@@ -31,6 +33,43 @@ uint64_t HashVec(vector<uint64_t> val)
     const void * key = (void *)&val[0];
     return MurmurHash64A(key, sizeof(key), 874); 
 }
+
+// Used ChatGPT to generate this function to read files
+vector<string> get_files_in_dir(string path)
+{
+    vector<string> files;
+    DIR* dir;
+    struct dirent* ent;
+
+    if ((dir = opendir(path.c_str())) != NULL) {
+        while ((ent = readdir(dir)) != NULL) {
+            if (ent->d_type == DT_REG) {
+                files.push_back(path + "/" + ent->d_name);
+            }
+        }
+        closedir(dir);
+    } else {
+        std::cerr << "Could not open directory: " << path << std::endl;
+    }
+
+    return files;
+}
+
+std::string read_file_contents(string file_path) {
+    try {
+        cout << file_path << endl;
+        std::ifstream file(file_path);
+        std::stringstream buffer;
+        buffer << file.rdbuf();
+        return buffer.str();
+    }
+    catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+        // Handle the error appropriately...
+        return "";
+    }
+}
+
 
 class PlagiarismDetection {
 
@@ -56,25 +95,26 @@ class PlagiarismDetection {
         int K;
         int num_hash_functions;
         int partition_length;
-        string filename;
+        string directory;
 
     public:
-        void parse_data(){
-            fstream file; 
-            file.open(filename);
-            string document;
+        void parse_data(vector<string> file_names){
+            
             int document_id = 0;
-            while(getline(file, document)){
+            for(string filename : file_names)
+            {
+
+                string contents = read_file_contents(filename);
+                cout << contents << endl;
                 set<string> k_grams;
-                for (int i = 0; i < (int) document.length() - this->K; i += this->K){
-                    string sub = document.substr(i, this->K);
+                for (int i = 0; i < (int) contents.length() - this->K; i += this->K){
+                    string sub = contents.substr(i, this->K);
                     transform(sub.begin(), sub.end(), sub.begin(), ::tolower);
                     k_grams.insert(sub);
                 }
                 document_k_grams[document_id] = k_grams; 
                 document_id++;
             }
-            file.close();
         }
 
         void min_hash()
@@ -222,12 +262,12 @@ class PlagiarismDetection {
             }
         }
 
-        PlagiarismDetection(int K, int num_hash_functions, int partition_length, string filename)
+        PlagiarismDetection(int K, int num_hash_functions, int partition_length, string directory)
         {
             this->K = K;
             this->num_hash_functions = num_hash_functions;
             this->partition_length = partition_length;
-            this->filename = filename;
+            this->directory = directory;
         }
 };
 
@@ -236,6 +276,8 @@ int main(int argc, char *argv[]){
     int chars_per_k_gram = 4;
     int num_hash_functions = 10;
     int partition_length = 2;
+
+    string document_folder = "documents";
 
     if(argc == 2)
     {
@@ -254,8 +296,9 @@ int main(int argc, char *argv[]){
     }
 
 
-    PlagiarismDetection * pd = new PlagiarismDetection(chars_per_k_gram, num_hash_functions, partition_length, "temp_data.txt");
-    pd->parse_data();
+    PlagiarismDetection * pd = new PlagiarismDetection(chars_per_k_gram, num_hash_functions, partition_length, document_folder);
+    vector<string> file_names = get_files_in_dir(document_folder);
+    pd->parse_data(file_names);
 
     // pd->print_k_grams();
 
@@ -268,7 +311,7 @@ int main(int argc, char *argv[]){
     // pd->print_partitions();
 
     pd->hash_the_sketches();
-    pd->find_collisions();
+    // pd->find_collisions();
     
     return 0;
 }
