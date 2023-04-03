@@ -5,21 +5,17 @@
 #include <vector>
 #include <functional>
 #include <set>
-#include <unordered_map>
-#include <bits/stdc++.h>
 #include <cctype>
 #include <string>
-#include <cctype>
 #include <clocale>
-#include <cstdlib>
-#include <dirent.h>
-#include <sstream>
 #include <chrono>
 
 // Solution code
 #include "plagiarism_detection.cc"
+#include "c_utils/test_helpers.h"
 
 using namespace std;
+
 
 // GLOBALS 
 chrono::high_resolution_clock::time_point m_startTime;

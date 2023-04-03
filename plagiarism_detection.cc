@@ -1,12 +1,30 @@
+// #include <cmath>
+// #include <cstring>
+// #include <vector>
+// #include <unordered_map>
+// #include <string>
+#include <iostream>
+#include <fstream>
 #include <cmath>
 #include <cstring>
 #include <vector>
+#include <functional>
+#include <set>
 #include <unordered_map>
+#include <bits/stdc++.h>
+#include <cctype>
 #include <string>
+#include <cctype>
+#include <clocale>
+#include <cstdlib>
+#include <dirent.h>
+#include <sstream>
+#include <chrono>
 
-#include "c_utils/helpers.c"
+#include "c_utils/solution_helpers.h"
 
 using namespace std;
+
 
 // making typedef for short declaration
 typedef unordered_multimap<uint64_t, string> mm;
@@ -124,13 +142,14 @@ class PlagiarismDetection {
             }
         }
 
+
         void find_collisions()
         {
             unordered_set<uint64_t> visited;
             unordered_set<string> docs_to_test;
             
             // Open the file to write to
-            ofstream outfile("output2.txt");
+            ofstream outfile("output.txt");
         
             for (mm_it it = hash_table.begin(); it != hash_table.end(); it++){
                 uint64_t key = it->first;
