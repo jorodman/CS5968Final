@@ -3,6 +3,8 @@
 #include <vector>
 #include <dirent.h>
 #include <sstream>
+#include <string>
+#include <cstring>
 
 #include "hashutil.h"
 
