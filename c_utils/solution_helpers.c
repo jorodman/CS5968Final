@@ -22,6 +22,18 @@ uint64_t HashVec(vector<uint64_t> val)
     return MurmurHash64A(key, sizeof(key), 874); 
 }
 
+
+string trim_folder_from_doc_name(string doc_name, string folder)
+{
+    size_t pos = doc_name.find(folder + "/");
+
+    if (pos != string::npos) {
+        doc_name.erase(0, pos + 10);
+    }
+
+    return doc_name;
+}
+
 vector<string> get_files_in_dir(string directory_path)
 {
     vector<string> files;

@@ -24,3 +24,4 @@ uint64_t Hash(string k_gram, int function_number);
 uint64_t HashVec(vector<uint64_t> val);
 vector<string> get_files_in_dir(string directory_path);
 string read_file_contents(string file_path);
+string trim_folder_from_doc_name(string doc_name, string folder);

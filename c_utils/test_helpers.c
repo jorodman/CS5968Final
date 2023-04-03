@@ -61,3 +61,17 @@ void print_partitions(map<string, vector<vector<uint64_t>>> partitions)
         cout << endl << endl;
     }
 }
+
+
+void write_out_docs_to_test(unordered_set<string> docs)
+{
+    ofstream outfile("output.txt");
+
+    for(string doc_name : docs)
+    {
+        outfile << doc_name << endl;
+    }
+
+    outfile.close();
+}
+

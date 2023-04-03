@@ -75,15 +75,16 @@ int main(int argc, char *argv[]){
     
     start_timer();
 
-    pd->parse_data(file_names);
+    pd->make_k_grams(file_names);
     pd->min_hash();
     pd->partition();
     pd->hash_the_sketches();
-    pd->find_collisions();
+    unordered_set<string> docs = pd->find_collisions();
 
     stop_timer();
-
     print_elapsed_time();
+
+    write_out_docs_to_test(docs);
     
     cout << endl;
     return 0;

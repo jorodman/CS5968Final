@@ -17,7 +17,7 @@ class PlagiarismDetection {
 
 	private:
         // Maps doc id to the documents k-grams
-        map<string, set<string>> document_k_grams;
+        map<string, set<string>> documents_k_grams;
 
         // Maps doc id to the min hash of the document for each hash function
         map<string, vector<uint64_t>> min_hashes;
@@ -41,8 +41,7 @@ class PlagiarismDetection {
 
     public:
 
-
-        void parse_data(vector<string> file_names){
+        void make_k_grams(vector<string> file_names){
             
             for(string filename : file_names)
             {
@@ -53,13 +52,13 @@ class PlagiarismDetection {
                     transform(sub.begin(), sub.end(), sub.begin(), ::tolower);
                     k_grams.insert(sub);
                 }
-                document_k_grams[filename] = k_grams; 
+                documents_k_grams[filename] = k_grams; 
             }
         }
 
         void min_hash()
         {
-            for(auto entry : document_k_grams)
+            for(auto entry : documents_k_grams)
             {
                 string document_id = entry.first;
                 set<string> k_grams = entry.second;
@@ -92,7 +91,6 @@ class PlagiarismDetection {
             // {1 -> [[1,2], [3, 4]]}
             for (auto entry : min_hashes){
                 string doc_id = entry.first;
-                // std::cout << doc_id << ": ";
                 vector<uint64_t> doc_hashes = entry.second;
                 vector<vector<uint64_t>> doc_partitions;
                 for (int i = 0; i < num_hash_functions; i += partition_length){
@@ -126,13 +124,10 @@ class PlagiarismDetection {
         }
 
 
-        void find_collisions()
+        unordered_set<string> find_collisions()
         {
             unordered_set<uint64_t> visited;
             unordered_set<string> docs_to_test;
-            
-            // Open the file to write to
-            ofstream outfile("output.txt");
         
             for (mm_it it = hash_table.begin(); it != hash_table.end(); it++){
                 uint64_t key = it->first;
@@ -142,36 +137,19 @@ class PlagiarismDetection {
                     pair<mm_it, mm_it> range = hash_table.equal_range(key);
                     size_t range_size = distance(range.first, range.second);
 
+                    // There is more than one doc in this part of the hash table
                     if(range_size > 1)
                     {
-                        // cout << key << ": ";
                         for (auto pair = range.first; pair != range.second; ++pair) {
                             string doc_name = pair->second;
-                            if(docs_to_test.count(doc_name) < 1)
-                                outfile << doc_name << endl;
-                            docs_to_test.insert(doc_name);
-                            // cout << (format_doc_name(doc_name)) << " ";
+                            docs_to_test.insert(pair->second);
                         }
-                        // cout << endl;              
                     }
                     visited.insert(key);
                 }
             }
 
-
-            outfile.close();
-        }
-
-        string format_doc_name(string str)
-        {
-            size_t pos = str.find("documents/");
-
-            // If "documents/" is found, erase it and everything before it
-            if (pos != string::npos) {
-                str.erase(0, pos + 10);
-            }
-
-            return str;
+            return docs_to_test;
         }
 
 
