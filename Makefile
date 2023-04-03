@@ -8,6 +8,7 @@ UTILS = c_utils
 
 test: test.o plagiarism_detection.o $(UTILS)/hashutil.o $(UTILS)/solution_helpers.o $(UTILS)/test_helpers.o
 	$(CC) $(CFLAGS) $^ -o $@ $(LIBS)
+	rm -rf *.o c_utils/*.o
 
 test.o: test.cc $(UTILS)/test_helpers.h plagiarism_detection.cc
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -25,4 +26,4 @@ $(UTILS)/test_helpers.o: $(UTILS)/test_helpers.h $(UTILS)/test_helpers.c
 	$(CC) $(CFLAGS) -c $(UTILS)/test_helpers.c -o $@
 
 clean:
-	rm -f test *.o
+	rm -f test *.o c_utils/*.o
