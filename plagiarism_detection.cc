@@ -1,25 +1,8 @@
-// #include <cmath>
-// #include <cstring>
-// #include <vector>
-// #include <unordered_map>
-// #include <string>
-#include <iostream>
-#include <fstream>
 #include <cmath>
 #include <cstring>
 #include <vector>
-#include <functional>
-#include <set>
 #include <unordered_map>
-#include <bits/stdc++.h>
-#include <cctype>
 #include <string>
-#include <cctype>
-#include <clocale>
-#include <cstdlib>
-#include <dirent.h>
-#include <sstream>
-#include <chrono>
 
 #include "c_utils/solution_helpers.h"
 

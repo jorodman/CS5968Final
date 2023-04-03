@@ -1,13 +1,8 @@
 #include <iostream>
 #include <fstream>
-#include <cmath>
-#include <cstring>
 #include <vector>
-#include <functional>
-#include <set>
 #include <cctype>
 #include <string>
-#include <clocale>
 #include <chrono>
 
 // Solution code
@@ -15,7 +10,6 @@
 #include "c_utils/test_helpers.h"
 
 using namespace std;
-
 
 // GLOBALS 
 chrono::high_resolution_clock::time_point m_startTime;
@@ -66,6 +60,7 @@ int main(int argc, char *argv[]){
         document_folder = argv[4];
     }
 
+    cout << endl;
     cout << "Running plagiarism detection with the following params:" << endl;
     cout << "K gram length:      " << chars_per_k_gram << endl;
     cout << "Num Hash Functions: " << num_hash_functions << endl;
@@ -90,6 +85,7 @@ int main(int argc, char *argv[]){
 
     print_elapsed_time();
     
+    cout << endl;
     return 0;
 }
 

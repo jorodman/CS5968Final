@@ -1,20 +1,8 @@
 #include <iostream>
 #include <fstream>
-#include <cmath>
-#include <cstring>
 #include <vector>
-#include <functional>
-#include <set>
-#include <unordered_map>
-#include <bits/stdc++.h>
-#include <cctype>
-#include <string>
-#include <cctype>
-#include <clocale>
-#include <cstdlib>
 #include <dirent.h>
 #include <sstream>
-#include <chrono>
 
 #include "hashutil.h"
 
@@ -32,7 +20,6 @@ uint64_t HashVec(vector<uint64_t> val)
     return MurmurHash64A(key, sizeof(key), 874); 
 }
 
-// Used ChatGPT to generate this function to read files
 vector<string> get_files_in_dir(string directory_path)
 {
     vector<string> files;
