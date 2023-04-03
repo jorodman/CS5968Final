@@ -7,7 +7,6 @@
 #include <set>
 #include <unordered_map>
 #include <bits/stdc++.h>
-#include "hashutil.h"
 #include <cctype>
 #include <string>
 #include <cctype>
@@ -16,6 +15,8 @@
 #include <dirent.h>
 #include <sstream>
 #include <chrono>
+
+#include "c_utils/hashutil.h"
 
 using namespace std;
 
@@ -36,21 +37,21 @@ uint64_t HashVec(vector<uint64_t> val)
 }
 
 // Used ChatGPT to generate this function to read files
-vector<string> get_files_in_dir(string path)
+vector<string> get_files_in_dir(string directory_path)
 {
     vector<string> files;
     DIR* dir;
     struct dirent* ent;
 
-    if ((dir = opendir(path.c_str())) != NULL) {
+    if ((dir = opendir(directory_path.c_str())) != NULL) {
         while ((ent = readdir(dir)) != NULL) {
             if (ent->d_type == DT_REG) {
-                files.push_back(path + "/" + ent->d_name);
+                files.push_back(directory_path + "/" + ent->d_name);
             }
         }
         closedir(dir);
     } else {
-        std::cerr << "Could not open directory: " << path << std::endl;
+        std::cerr << "Could not open directory: " << directory_path << std::endl;
     }
 
     return files;
