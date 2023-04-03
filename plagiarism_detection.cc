@@ -15,11 +15,12 @@
 #include <cstdlib>
 #include <dirent.h>
 #include <sstream>
+#include <chrono>
 
 using namespace std;
 
 // making typedef for short declaration
-typedef unordered_multimap<uint64_t, int> mm;
+typedef unordered_multimap<uint64_t, string> mm;
 typedef mm::iterator mm_it;
 
 uint64_t Hash(string k_gram, int function_number)
@@ -57,7 +58,6 @@ vector<string> get_files_in_dir(string path)
 
 std::string read_file_contents(string file_path) {
     try {
-        cout << file_path << endl;
         std::ifstream file(file_path);
         std::stringstream buffer;
         buffer << file.rdbuf();
@@ -75,22 +75,25 @@ class PlagiarismDetection {
 
 	private:
         // Maps doc id to the documents k-grams
-        map<int, set<string>> document_k_grams;
+        map<string, set<string>> document_k_grams;
 
         // Maps doc id to the min hash of the document for each hash function
-        map<int, vector<uint64_t>> minHashes;
+        map<string, vector<uint64_t>> minHashes;
 
         /*
             Maps doc id to list of each document's partitions. A partition is stored as a vector
             document1 -> [[211, 134], [211, 411], [754, 111]]
         */
-        map<int, vector<vector<uint64_t>>> partitions;
+        map<string, vector<vector<uint64_t>>> partitions;
 
         // Maps a partition value to document ids
-        unordered_multimap<uint64_t, int> hash_table;
+        unordered_multimap<uint64_t, string> hash_table;
 
         // doc id to list of doc ids
-        unordered_multimap<int, unordered_set<int>> similar_docs;
+        unordered_multimap<string, unordered_set<string>> similar_docs;
+
+        chrono::high_resolution_clock::time_point m_startTime;
+        chrono::high_resolution_clock::time_point m_endTime;
 
         int K;
         int num_hash_functions;
@@ -98,22 +101,34 @@ class PlagiarismDetection {
         string directory;
 
     public:
+
+        void start() {
+            m_startTime = std::chrono::high_resolution_clock::now();
+        }
+
+        void stop() {
+            m_endTime = std::chrono::high_resolution_clock::now();
+        }
+
+        void printElapsedTime() {
+            auto elapsed = std::chrono::duration_cast<std::chrono::microseconds>(m_endTime - m_startTime);
+            double seconds = static_cast<double>(elapsed.count()) / 1000000.0;
+            std::cout << "Elapsed time: " << elapsed.count() << " microseconds." << std::endl;
+            std::cout << "Elapsed time: " << seconds << " seconds." << std::endl;
+        }
+
         void parse_data(vector<string> file_names){
             
-            int document_id = 0;
             for(string filename : file_names)
             {
-
                 string contents = read_file_contents(filename);
-                cout << contents << endl;
                 set<string> k_grams;
                 for (int i = 0; i < (int) contents.length() - this->K; i += this->K){
                     string sub = contents.substr(i, this->K);
                     transform(sub.begin(), sub.end(), sub.begin(), ::tolower);
                     k_grams.insert(sub);
                 }
-                document_k_grams[document_id] = k_grams; 
-                document_id++;
+                document_k_grams[filename] = k_grams; 
             }
         }
 
@@ -121,7 +136,7 @@ class PlagiarismDetection {
         {
             for(auto entry : document_k_grams)
             {
-                int document_id = entry.first;
+                string document_id = entry.first;
                 set<string> k_grams = entry.second;
 
                 vector<uint64_t> sketch;
@@ -146,12 +161,12 @@ class PlagiarismDetection {
             }
         }
 
-        map<int, vector<vector<uint64_t>>> partition()
+        map<string, vector<vector<uint64_t>>> partition()
         {
             // {1 -> [1, 2, 3, 4, 5, 6]}
             // {1 -> [[1,2], [3, 4]]}
             for (auto entry : minHashes){
-                int doc_id = entry.first;
+                string doc_id = entry.first;
                 // std::cout << doc_id << ": ";
                 vector<uint64_t> doc_hashes = entry.second;
                 vector<vector<uint64_t>> doc_partitions;
@@ -173,7 +188,7 @@ class PlagiarismDetection {
         {
             for(auto entry : this->partitions)
             {
-                int doc_id = entry.first;
+                string doc_id = entry.first;
                 vector<vector<uint64_t>> partitions = entry.second;
                    
                 for(vector<uint64_t> partitionValues : partitions)
@@ -188,6 +203,10 @@ class PlagiarismDetection {
         void find_collisions()
         {
             unordered_set<uint64_t> visited;
+            unordered_set<string> docs_to_test;
+            
+            // Open the file to write to
+            ofstream outfile("output2.txt");
         
             for (mm_it it = hash_table.begin(); it != hash_table.end(); it++){
                 uint64_t key = it->first;
@@ -199,18 +218,34 @@ class PlagiarismDetection {
 
                     if(range_size > 1)
                     {
-                        cout << key << ": ";
+                        // cout << key << ": ";
                         for (auto pair = range.first; pair != range.second; ++pair) {
-                            cout << (pair->second + 1) << " ";
-                            // if(similar_docs[doc_id])
-                            // similar_docs[doc_id]
+                            string doc_name = pair->second;
+                            if(docs_to_test.count(doc_name) < 1)
+                                outfile << doc_name << endl;
+                            docs_to_test.insert(doc_name);
+                            // cout << (format_doc_name(doc_name)) << " ";
                         }
-                        cout << endl;              
+                        // cout << endl;              
                     }
                     visited.insert(key);
                 }
             }
-            
+
+
+            outfile.close();
+        }
+
+        string format_doc_name(string str)
+        {
+            size_t pos = str.find("documents/");
+
+            // If "documents/" is found, erase it and everything before it
+            if (pos != string::npos) {
+                str.erase(0, pos + 10);
+            }
+
+            return str;
         }
 
         void print_sketches()
@@ -246,7 +281,7 @@ class PlagiarismDetection {
         void print_partitions()
         {
             for (auto entry : partitions){
-                int doc_id = entry.first;
+                string doc_id = entry.first;
                 cout << doc_id << ": ";
                 vector<vector<uint64_t>> doc_partitions = entry.second;
                 for (vector<uint64_t> part : doc_partitions){
@@ -295,8 +330,11 @@ int main(int argc, char *argv[]){
         partition_length = atoi(argv[3]);
     }
 
-
     PlagiarismDetection * pd = new PlagiarismDetection(chars_per_k_gram, num_hash_functions, partition_length, document_folder);
+
+
+    pd->start();
+
     vector<string> file_names = get_files_in_dir(document_folder);
     pd->parse_data(file_names);
 
@@ -311,7 +349,11 @@ int main(int argc, char *argv[]){
     // pd->print_partitions();
 
     pd->hash_the_sketches();
-    // pd->find_collisions();
+    pd->find_collisions();
+
+    pd->stop();
+
+    pd->printElapsedTime();
     
     return 0;
 }
