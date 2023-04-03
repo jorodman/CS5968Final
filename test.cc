@@ -37,11 +37,11 @@ void print_elapsed_time() {
 }
 
 int main(int argc, char *argv[]){
-    int chars_per_k_gram = 4;
+    int chars_per_k_gram = 10;
     int num_hash_functions = 10;
     int partition_length = 2;
-
     string document_folder = "documents";
+    string output_file = "output.txt";
 
     if(argc == 2)
     {
@@ -58,24 +58,31 @@ int main(int argc, char *argv[]){
         num_hash_functions = atoi(argv[2]);
         partition_length = atoi(argv[3]);
     }
+    else if(argc == 5)
+    {
+        chars_per_k_gram = atoi(argv[1]);
+        num_hash_functions = atoi(argv[2]);
+        partition_length = atoi(argv[3]);
+        document_folder = argv[4];
+    }
 
-    PlagiarismDetection * pd = new PlagiarismDetection(chars_per_k_gram, num_hash_functions, partition_length, document_folder);
-
-    start_timer();
+    cout << "Running plagiarism detection with the following params:" << endl;
+    cout << "K gram length:      " << chars_per_k_gram << endl;
+    cout << "Num Hash Functions: " << num_hash_functions << endl;
+    cout << "Partition Length:   " << partition_length << endl;
+    cout << "Folder with docs:   " << document_folder << endl;
+    cout << "Outputing file:     " << output_file << endl;
+    cout << endl;
 
     vector<string> file_names = get_files_in_dir(document_folder);
+
+    PlagiarismDetection * pd = new PlagiarismDetection(chars_per_k_gram, num_hash_functions, partition_length, document_folder);
+    
+    start_timer();
+
     pd->parse_data(file_names);
-
-    // pd->print_k_grams();
-
     pd->min_hash();
-
-    // pd->print_sketches();
-
     pd->partition();
-
-    // pd->print_partitions();
-
     pd->hash_the_sketches();
     pd->find_collisions();
 
