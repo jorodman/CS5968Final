@@ -10,8 +10,11 @@
 #include <cctype>
 #include <string>
 #include <cctype>
+#include <algorithm>
 
 using namespace std;
+typedef unordered_multimap<uint64_t, string> mm;
+typedef mm::iterator mm_it;
 
 void print_sketches(map<string, vector<uint64_t>> min_hashes)
 {
@@ -62,16 +65,55 @@ void print_partitions(map<string, vector<vector<uint64_t>>> partitions)
     }
 }
 
-
-void write_out_docs_to_test(unordered_set<string> docs)
+void write_pairs_to_file(set<pair<string, string>> pairs)
 {
-    ofstream outfile("output.txt");
+    ofstream outfile("pairs.txt");
 
-    for(string doc_name : docs)
-    {
-        outfile << doc_name << endl;
+    for (auto p : pairs) {
+        outfile << p.first << endl << p.second << endl;
+        outfile << endl;
     }
 
-    outfile.close();
 }
+
+void write_hash_table_to_file(unordered_multimap<uint64_t, string> hash_table)
+{
+    ofstream outfile("hash_table.txt");
+    unordered_set<uint64_t> visited;
+    unordered_set<string> docs_to_test;
+    for (mm_it it = hash_table.begin(); it != hash_table.end(); it++){
+        uint64_t key = it->first;
+        
+        if(visited.count(key) < 1)
+        {
+            pair<mm_it, mm_it> range = hash_table.equal_range(key);
+            size_t range_size = distance(range.first, range.second);
+
+            // There is more than one doc in this part of the hash table
+            if(range_size > 1)
+            {
+                for (auto pair = range.first; pair != range.second; ++pair) {
+                    string doc_name = pair->second;
+                    outfile << doc_name << endl;
+                    docs_to_test.insert(pair->second);
+                }
+                outfile << endl;
+            }
+            visited.insert(key);
+        }
+    }
+}
+
+
+// void write_out_docs_to_test(unordered_set<string> docs)
+// {
+//     ofstream outfile("output.txt");
+
+//     for(string doc_name : docs)
+//     {
+//         outfile << doc_name << endl;
+//     }
+
+//     outfile.close();
+// }
 

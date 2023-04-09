@@ -79,12 +79,13 @@ int main(int argc, char *argv[]){
     pd->min_hash();
     pd->partition();
     pd->hash_the_sketches();
-    unordered_set<string> docs = pd->find_collisions();
+    pd->find_collisions();
 
     stop_timer();
     print_elapsed_time();
 
-    write_out_docs_to_test(docs);
+    write_hash_table_to_file(pd->get_hash_table());
+    write_pairs_to_file(pd->getAllPairs(pd->get_hash_table()));
     
     cout << endl;
     return 0;

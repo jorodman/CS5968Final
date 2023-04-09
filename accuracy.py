@@ -78,7 +78,6 @@ if __name__ == "__main__":
     similarities = compare_all_files(folder, k)
 
     timer.stop()
-
     with open("benchmark_pairs.txt", 'w') as f:
         for similarity, files in similarities.items():
             if similarity > threshold:

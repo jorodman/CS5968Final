@@ -3,11 +3,12 @@
 #include <vector>
 #include <unordered_map>
 #include <string>
+#include <set>
+#include <algorithm>
 
 #include "c_utils/solution_helpers.h"
 
 using namespace std;
-
 
 // making typedef for short declaration
 typedef unordered_multimap<uint64_t, string> mm;
@@ -123,6 +124,46 @@ class PlagiarismDetection {
             }
         }
 
+        unordered_multimap<uint64_t, string> get_hash_table()
+        {
+            return hash_table;
+        }
+
+        // TODO move to helper file or something?
+        vector<string> getValues(const unordered_multimap<uint64_t, string>& m, uint64_t key) {
+            vector<string> values;
+            auto range = m.equal_range(key);
+            for (auto it = range.first; it != range.second; ++it) {
+                values.push_back(it->second);
+            }
+            return values;
+        }
+
+        // TODO move to helper file or something?
+        set<pair<string, string>> getAllPairs(const unordered_multimap<uint64_t, string>& m) {
+            set<pair<string, string>> pairs;
+
+            for (auto i = m.begin(); i != m.end(); ++i) {
+                auto j = i;
+                ++j;
+                while (j != m.end() && j->first == i->first) {
+                    vector<string> values1 = getValues(m, i->first);
+                    vector<string> values2 = getValues(m, j->first);
+                    for (const auto& value1 : values1) {
+                        for (const auto& value2 : values2) {
+                            if (value1 != value2) {
+                                pairs.insert(make_pair(value1, value2));
+                                pairs.insert(make_pair(value2, value1));
+                            }
+                        }
+                    }
+                    ++j;
+                }
+            }
+
+            return pairs;
+        }
+
 
         unordered_set<string> find_collisions()
         {
@@ -140,10 +181,13 @@ class PlagiarismDetection {
                     // There is more than one doc in this part of the hash table
                     if(range_size > 1)
                     {
+                        // cout << key << endl;
                         for (auto pair = range.first; pair != range.second; ++pair) {
                             string doc_name = pair->second;
+                            // cout << doc_name << endl;
                             docs_to_test.insert(pair->second);
                         }
+                        // cout << endl;
                     }
                     visited.insert(key);
                 }

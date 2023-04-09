@@ -16,4 +16,6 @@ using namespace std;
 void print_sketches(map<string, vector<uint64_t>> min_hashes);
 void print_k_grams(map<string, set<string>> document_k_grams);
 void print_partitions(map<string, vector<vector<uint64_t>>> partitions);
-void write_out_docs_to_test(unordered_set<string> docs);
+void write_hash_table_to_file(unordered_multimap<uint64_t, string> hash_table);
+void write_pairs_to_file(set<pair<string, string>> pairs);
+// void write_out_docs_to_test(unordered_set<string> docs);
