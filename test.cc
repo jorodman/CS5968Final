@@ -32,11 +32,11 @@ void print_elapsed_time() {
 
 int main(int argc, char *argv[]){
     int chars_per_k_gram = 10;
-    int num_hash_functions = 10;
-    int partition_length = 2;
+    int num_hash_functions = 100;
+    int partition_length = 1;
     string document_folder = "documents";
-    string output_file = "output.txt";
-
+    string output_file = "pairs.txt";
+ 
     if(argc == 2)
     {
         chars_per_k_gram = atoi(argv[1]);
@@ -81,11 +81,13 @@ int main(int argc, char *argv[]){
     pd->hash_the_sketches();
     pd->find_collisions();
 
+    map<string, set<string>> similar_docs = pd->getSimilarDocsMap(pd->get_hash_table());
     stop_timer();
-    print_elapsed_time();
+    // write_similar_docs_to_file(similar_docs);
 
-    write_hash_table_to_file(pd->get_hash_table());
-    write_pairs_to_file(pd->getAllPairs(pd->get_hash_table()));
+    print_elapsed_time();
+    // write_hash_table_to_file(pd->get_hash_table());
+    // write_pairs_to_file(pd->getAllPairs(pd->get_hash_table()));
     
     cout << endl;
     return 0;

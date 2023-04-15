@@ -54,22 +54,32 @@ if __name__ == "__main__":
     # TODO run this on the same set of documents as our algorithm - dont use the entire folder
     folder = "documents"
     k = 10
-    threshold = 0.3
+    threshold = 0.1
+    step = 0.05
+    max_threshold = 0.4
 
     timer = Timer()
     timer.start()
 
     similarities = compare_all_files(folder, k)
 
+    prefix = "benchmark_pairs_"
+    
     timer.stop()
-    with open("benchmark_pairs.txt", 'w') as f:
-        for similarity, files in similarities.items():
-            if similarity > threshold:
-                # print(f"{similarity:.2f} Jaccard similarity with {k}-grams in the following files:")
-                for file1, file2 in files:
-                    f.write(file1)
-                    f.write('\n')
-                    f.write(file2)
-                    f.write('\n\n')
-
     timer.print_elapsed_time()
+
+
+    while threshold <= max_threshold:
+        filename = prefix + str(threshold) + ".txt"
+        print("Writing to file: " + filename)
+        with open(filename, 'w') as f:
+            for similarity, files in similarities.items():
+                if similarity > threshold:
+                    for file1, file2 in files:
+                        f.write(file1)
+                        f.write('\n')
+                        f.write(file2)
+                        f.write('\n\n')
+        
+        threshold += step
+

@@ -14,6 +14,20 @@ using namespace std;
 typedef unordered_multimap<uint64_t, string> mm;
 typedef mm::iterator mm_it;
 
+struct PairComparator {
+    bool operator()(const pair<string, string>& a, const pair<string, string>& b) const {
+        if (a == b) {
+            return false;
+        }
+        else if (a.first == b.second && a.second == b.first) {
+            return false;
+        }
+        else {
+            return a < b;
+        }
+    }
+};
+
 class PlagiarismDetection {
 
 	private:
@@ -139,9 +153,37 @@ class PlagiarismDetection {
             return values;
         }
 
+
+        map<string, set<string>> getSimilarDocsMap(const unordered_multimap<uint64_t, string>& m)
+        {
+            map<string, set<string>> similarDocsMap;
+            
+            for (auto i = m.begin(); i != m.end(); ++i) {
+                auto j = i;
+                ++j;
+                while (j != m.end() && j->first == i->first) {
+                    vector<string> values1 = getValues(m, i->first);
+                    vector<string> values2 = getValues(m, j->first);
+                    for (const auto& value1 : values1) {
+                        // set<string> similarDocs;
+                        for (const auto& value2 : values2) {
+                            if (value1 != value2) {
+                                // similarDocsMap[value1].insert(value2);
+                                // similarDocsMap.insert(make_pair(value1, value2));
+                            }
+                        }
+                        
+                    }
+                    ++j;
+                }
+            }
+
+            return similarDocsMap;
+        }
+        
         // TODO move to helper file or something?
-        set<pair<string, string>> getAllPairs(const unordered_multimap<uint64_t, string>& m) {
-            set<pair<string, string>> pairs;
+        set<set<string>> getAllPairs(const unordered_multimap<uint64_t, string>& m) {
+            set<set<string>> pairs;
 
             for (auto i = m.begin(); i != m.end(); ++i) {
                 auto j = i;
@@ -152,15 +194,37 @@ class PlagiarismDetection {
                     for (const auto& value1 : values1) {
                         for (const auto& value2 : values2) {
                             if (value1 != value2) {
-                                pairs.insert(make_pair(value1, value2));
-                                pairs.insert(make_pair(value2, value1));
+                                set<string> pair;
+                                pair.insert(value1);
+                                pair.insert(value2);
+                                pairs.insert(pair);
+                                // cout << pairs.size() << endl;
+                                // string smaller = "";
+                                // string greater  = "";
+                                // if (value1.compare(value2) < 0){
+                                //     smaller = value1;
+                                //     greater = value2;
+                                // }
+                                // else{
+                                //     smaller = value2;
+                                //     greater = value1;
+                                // }
+                                // pair<string, string> p = make_pair(smaller, greater);
+                                // if (pairs.find(p) != pairs.end()) {
+                                //     continue;
+                                // }
+                                // else{
+                                //     pairs.insert(make_pair(smaller, greater));
+                                // }           
+
+                                // pairs.insert(make_pair(value1, value2));
+                                // pairs.insert(make_pair(value2, value1));
                             }
                         }
                     }
                     ++j;
                 }
             }
-
             return pairs;
         }
 
