@@ -39,35 +39,19 @@ def compare_files(file1, file2, k):
     return similarity
 
 def compare_all_files(folder, k):
-    # 2D array
-    all_files = get_docs_from_file('similar_docs.txt')
-        
-    similarities = collections.defaultdict(list)
-    for similar_files in all_files:
-        for file1, file2 in itertools.combinations(similar_files, 2):
-            similarity = compare_files(file1, file2, k)
-            similarities[similarity].append((file1, file2))
-    return similarities
-
-
-
-def get_docs_from_file(filename):
-    all_files = []
-    temp_files = []
-    file = open(filename, "r")
+    files = [os.path.join(folder, file) for file in os.listdir(folder)]
     
-    for line in file:
-        if line == '\n':
-            all_files.append(temp_files)
-            temp_files = []
-        else:
-            line = line.strip()
-            temp_files.append(line)
-    return all_files
+    similarities = collections.defaultdict(list)
+    for file1, file2 in itertools.combinations(files, 2):
+        similarity = compare_files(file1, file2, k)
+        similarities[similarity].append((file1, file2))
+    return similarities
 
 if __name__ == "__main__":
     # folder = input("Enter the folder path: ")
     # k = int(input("Enter the k value for k-grams: "))
+
+    # TODO run this on the same set of documents as our algorithm - dont use the entire folder
     folder = "documents"
     k = 10
     threshold = 0.3
@@ -78,7 +62,6 @@ if __name__ == "__main__":
     similarities = compare_all_files(folder, k)
 
     timer.stop()
-
     with open("benchmark_pairs.txt", 'w') as f:
         for similarity, files in similarities.items():
             if similarity > threshold:

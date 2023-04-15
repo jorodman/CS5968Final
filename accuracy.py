@@ -1,4 +1,3 @@
-# new
 import os
 import string
 import itertools
