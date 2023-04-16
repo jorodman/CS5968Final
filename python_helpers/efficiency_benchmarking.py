@@ -2,18 +2,6 @@ import os
 import string
 import itertools
 import collections
-import time
-
-class Timer:
-    def start(self):
-        self.start_time = time.perf_counter()
-
-    def stop(self):
-        self.end_time = time.perf_counter()
-
-    def print_elapsed_time(self):
-        elapsed_time = self.end_time - self.start_time
-        print("Elapsed time: {:.6f} seconds".format(elapsed_time))
 
 
 def get_k_grams(text, k):
@@ -67,16 +55,10 @@ if __name__ == "__main__":
     k = 10
     threshold = 0.3
 
-    timer = Timer()
-    timer.start()
-
     similarities = compare_all_files(folder, k)
 
-    timer.stop()
     # for similarity, files in similarities.items():
     #     if similarity > threshold:
     #         print(f"{similarity:.2f} Jaccard similarity with {k}-grams in the following files:")
     #         for file1, file2 in files:
     #             print(f"{file1} and {file2}")
-
-    timer.print_elapsed_time()
