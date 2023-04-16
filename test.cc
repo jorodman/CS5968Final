@@ -36,7 +36,7 @@ int main(int argc, char *argv[]){
     int partition_length = 3;
     string document_folder = "documents";
     string output_file = "outputs/hash_table.txt";
- 
+
     if(argc == 2)
     {
         chars_per_k_gram = atoi(argv[1]);
@@ -51,13 +51,6 @@ int main(int argc, char *argv[]){
         chars_per_k_gram = atoi(argv[1]);
         num_hash_functions = atoi(argv[2]);
         partition_length = atoi(argv[3]);
-    }
-    else if(argc == 5)
-    {
-        chars_per_k_gram = atoi(argv[1]);
-        num_hash_functions = atoi(argv[2]);
-        partition_length = atoi(argv[3]);
-        document_folder = argv[4];
     }
 
     cout << endl;

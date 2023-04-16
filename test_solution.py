@@ -28,7 +28,7 @@ def run_lsh(configs):
     print("Running LSH")
     my_timer = Timer()
     my_timer.start()
-    subprocess.run("./test")
+    subprocess.run(["./test", configs['k'], configs['num_hash_functions'], configs['partition_length']])
     subprocess.run(["python3", "file_conversion.py", configs['k'], configs['num_hash_functions'], configs['partition_length']], cwd="python_helpers")
     my_timer.stop()
     my_timer.print_elapsed_time()
