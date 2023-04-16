@@ -12,14 +12,21 @@ using namespace std;
 
 uint64_t Hash(string k_gram, int function_number)
 {
+    uint64_t seed = function_number;
     const char * key = k_gram.c_str();
-    return MurmurHash64A(key, sizeof(key), function_number); 
+    return MurmurHash64A(key, sizeof(key), seed); 
+}
+
+uint64_t HashNum(uint64_t num)
+{
+    const void * key = (void *) &num;
+    return MurmurHash64A(key, sizeof(key), 1); 
 }
 
 uint64_t HashVec(vector<uint64_t> val)
 {
     const void * key = (void *)&val[0];
-    return MurmurHash64A(key, sizeof(key), 874); 
+    return MurmurHash64A(key, sizeof(key), 1); 
 }
 
 

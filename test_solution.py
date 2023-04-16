@@ -1,9 +1,20 @@
 import subprocess
 import sys
+import os
+
 from python_helpers.python_timer import Timer
 
 def make():
     subprocess.run('make')
+
+def count_files(path):
+    file_list = os.listdir(path)
+    file_list = [f for f in file_list if os.path.isfile(os.path.join(path, f))]
+    return len(file_list)
+
+def get_possible_combinations(configs):
+    num_files = count_files(configs['document_folder'])
+    return num_files * (num_files - 1)
 
 def parse_cmd_line(args):
 
@@ -11,7 +22,7 @@ def parse_cmd_line(args):
         'compute_benchmarking': False,
         'k': '10',
         'num_hash_functions': '10',
-        'partition_length': '2',
+        'partition_length': '1',
         'document_folder': 'documents',
         'hash_table_file': 'outputs/hash_table.txt',
         'pair_file': 'outputs/pairs.txt',
@@ -28,8 +39,8 @@ def parse_cmd_line(args):
         elif arg.startswith("--d="):
             configs['document_folder'] = arg.split("=")[1]
         elif arg.startswith("--b"):
-            response = input('Are you sure you want to compute benchmarking? It will take a couple of minutes... (yes or no)\n')
-            if 'yes' in response:
+            # response = input('Are you sure you want to compute benchmarking? It will take a couple of minutes... (yes or no)\n')
+            # if 'yes' in response:
                 configs['compute_benchmarking'] = True
         elif arg.startswith("--o="):
             configs['hash_table_file'] = f"outputs/hash_table_{arg.split('=')[1]}.txt"
@@ -54,20 +65,20 @@ def run_benchmarking(configs):
     benchmarking_timer.stop()
     benchmarking_timer.print_elapsed_time()
 
-def compute_accuracy():
-    subprocess.run(["python3", "compute_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on']], cwd="python_helpers")
+def compute_accuracy(configs):
+    num_combos = get_possible_combinations(configs)
+    subprocess.run(["python3", "compute_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on'], str(num_combos)], cwd="python_helpers")
 
 
 # MAIN
 configs = parse_cmd_line(sys.argv)
 
-# make()
 run_lsh(configs)
 
 if configs['compute_benchmarking']:
     run_benchmarking(configs)
 
-compute_accuracy()
+compute_accuracy(configs)
 
 
 

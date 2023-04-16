@@ -61,7 +61,7 @@ print('Benchmarking from folder: ' + folder)
 print('K:                        ' + str(k))
 print('File add on:              ' + file_add_on)
 
-threshold = 0.01
+threshold = 0.05
 step = 0.01
 max_threshold = 0.15
 

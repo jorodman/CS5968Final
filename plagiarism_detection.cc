@@ -112,6 +112,7 @@ class PlagiarismDetection {
 
         void hash_the_sketches()
         {
+            cout << "Hash the sketches" << endl;
             for(auto entry : this->partitions)
             {
                 string doc_id = entry.first;
@@ -120,7 +121,6 @@ class PlagiarismDetection {
                 for(vector<uint64_t> partitionValues : partitions)
                 {
                     uint64_t key = HashVec(partitionValues);
-
                     hash_table.insert(make_pair(key, doc_id));
                 }
             }
