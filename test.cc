@@ -64,21 +64,13 @@ int main(int argc, char *argv[]){
 
     vector<string> file_names = get_files_in_dir(document_folder);
 
-    PlagiarismDetection * pd = new PlagiarismDetection(chars_per_k_gram, num_hash_functions, partition_length, document_folder);
-    
-    start_timer();
+    PlagiarismDetection * pd = new PlagiarismDetection(chars_per_k_gram, num_hash_functions, partition_length, file_names);
 
-    pd->make_k_grams(file_names);
-    pd->min_hash();
-    pd->partition();
-    pd->hash_the_sketches();
-    pd->find_collisions();
+    pd->run();
+    
+
     write_hash_table_to_file(pd->get_hash_table(), output_file);
 
-    stop_timer();
-    // print_elapsed_time();
-    
-    cout << endl;
     return 0;
 }
 
