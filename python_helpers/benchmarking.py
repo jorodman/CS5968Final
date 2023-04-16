@@ -2,6 +2,7 @@ import os
 import string
 import itertools
 import collections
+import sys
 
 def get_k_grams(text, k):
     words = text.split()
@@ -35,12 +36,10 @@ def compare_all_files(folder, k):
     return similarities
 
 if __name__ == "__main__":
-    # folder = input("Enter the folder path: ")
-    # k = int(input("Enter the k value for k-grams: "))
-
-    # TODO run this on the same set of documents as our algorithm - dont use the entire folder
     folder = "../documents"
-    k = 20
+
+    k = int(sys.argv[1])
+
     threshold = 0.1
     step = 0.05
     max_threshold = 0.4
@@ -51,15 +50,16 @@ if __name__ == "__main__":
     
     while threshold <= max_threshold:
         filename = prefix + str(threshold) + ".txt"
-        print("Writing to file: " + filename)
+        # print("Writing to file: " + filename)
         with open(filename, 'w') as f:
             for similarity, files in similarities.items():
                 if similarity > threshold:
                     for file1, file2 in files:
-                        f.write(file1)
+                        f.write(file1[3:])
                         f.write('\n')
-                        f.write(file2)
+                        f.write(file2[3:])
                         f.write('\n\n')
         
         threshold += step
+        threshold = round(threshold, 2)
 

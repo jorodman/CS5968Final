@@ -13,7 +13,9 @@ def parse_cmd_line(args):
 
     for arg in sys.argv[1:]:
         if arg == "--b":
-            configs['compute_benchmarking'] = True
+            response = input('Are you sure you want to compute benchmarking? It will take a couple of minutes... (yes or no)\n')
+            if 'yes' in response:
+                configs['compute_benchmarking'] = True
         elif arg.startswith("--k="):
             configs['k'] = arg.split("=")[1]
         elif arg.startswith("--h="):
@@ -26,16 +28,16 @@ def parse_cmd_line(args):
 
 def run_lsh(configs):
     print("Running LSH")
-    my_timer = Timer()
+    my_timer = Timer("LSH")
     my_timer.start()
     subprocess.run(["./test", configs['k'], configs['num_hash_functions'], configs['partition_length']])
-    subprocess.run(["python3", "file_conversion.py", configs['k'], configs['num_hash_functions'], configs['partition_length']], cwd="python_helpers")
+    subprocess.run(["python3", "file_conversion.py"], cwd="python_helpers")
     my_timer.stop()
     my_timer.print_elapsed_time()
 
 def run_benchmarking(configs):
     print('Running benchmarking')
-    benchmarking_timer = Timer()
+    benchmarking_timer = Timer("Benchmarking")
     benchmarking_timer.start()
     subprocess.run(["python3", "benchmarking.py", configs['k']], cwd="python_helpers")
     benchmarking_timer.stop()
@@ -52,7 +54,7 @@ configs = parse_cmd_line(sys.argv)
 
 run_lsh(configs)
 
-if configs['compute_benchmarking']: 
+if configs['compute_benchmarking']:
     run_benchmarking(configs)
 
 compute_accuracy()

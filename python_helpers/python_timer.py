@@ -1,6 +1,9 @@
 import time
 
 class Timer:
+    def __init__(self, label = 'No label'):
+        self.label = label
+
     def start(self):
         self.start_time = time.perf_counter()
 
@@ -9,4 +12,6 @@ class Timer:
 
     def print_elapsed_time(self):
         elapsed_time = self.end_time - self.start_time
-        print("Elapsed time: {:.6f} seconds".format(elapsed_time))
+        print(self.label)
+        print(round(elapsed_time, 5))
+        print('\n')

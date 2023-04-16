@@ -76,7 +76,7 @@ int main(int argc, char *argv[]){
     write_hash_table_to_file(pd->get_hash_table(), output_file);
 
     stop_timer();
-    print_elapsed_time();
+    // print_elapsed_time();
     
     cout << endl;
     return 0;
