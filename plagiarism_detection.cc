@@ -74,6 +74,7 @@ class PlagiarismDetection {
                 for (int i = 0; i < (int) contents.length() - this->K; i += this->K){
                     string sub = contents.substr(i, this->K);
                     transform(sub.begin(), sub.end(), sub.begin(), ::tolower);
+                    // cout << sub << endl;
                     k_grams.insert(sub);
                 }
                 documents_k_grams[filename] = k_grams; 

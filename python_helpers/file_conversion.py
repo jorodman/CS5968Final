@@ -20,5 +20,6 @@ with open(f"../{hash_table_file}", 'r') as f:
 with open(f'../{pair_file}', 'w') as f:
     for s in master_set:
         elements = list(s)
-        f.write(elements[0] + '\n' + elements[1] + '\n')
+        f.write(elements[0] + '\n' + elements[1])
+        f.write('\n\n')
 

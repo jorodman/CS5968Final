@@ -9,11 +9,9 @@ def get_k_grams(text, k):
 
     # Don't go out of bounds for an extra k gram
     final_char_index = len(text) - k + 1
-    print('Final: ', final_char_index)
     for i in range(0, final_char_index, k):
         k_gram = text[i:i + k]
-        print('k-gram: ', k_gram)
-        k_grams.add(k_gram)
+        k_grams.add(k_gram.lower())
     return k_grams
 
 def compare_files(file1, file2, k):
@@ -23,6 +21,8 @@ def compare_files(file1, file2, k):
         text2 = f2.read()
     k_grams1 = get_k_grams(text1, k)
     k_grams2 = get_k_grams(text2, k)
+    # print(k_grams1)
+    # print(k_grams2)
 
     common_k_grams = k_grams1 & k_grams2
     union_k_grams = k_grams1 | k_grams2
@@ -31,9 +31,6 @@ def compare_files(file1, file2, k):
 
 def compare_all_files(folder, k):
     files = [os.path.join(folder, file) for file in os.listdir(folder)]
-    files =  [x for x in files if "/doc_" not in x]
-    print(files)
-    
     similarities = collections.defaultdict(list)
     for file1, file2 in itertools.combinations(files, 2):
         similarity = compare_files(file1, file2, k)
@@ -62,31 +59,33 @@ else:
 
 print('Benchmarking from folder: ' + folder)
 print('K:                        ' + str(k))
+print('File add on:              ' + file_add_on)
 
-if len(file_add_on):
-    print('File add on:          ' + file_add_on)
-
-threshold = 0.1
-step = 0.05
-max_threshold = 0.4
+threshold = 0.01
+step = 0.01
+max_threshold = 0.15
 
 similarities = compare_all_files(folder, k)
 
 prefix = "../outputs/benchmark_pairs" + file_add_on
-print("Benchmarking files:      " + str(prefix))
+print("Benchmarking files:       " + str(prefix))
 
 while threshold <= max_threshold:
-    filename = prefix + str(threshold) + ".txt"
-    print(filename)
+    filename = prefix + str(round(threshold, 2)) + ".txt"
+    # print(filename)
     with open(filename, 'w') as f:
         for similarity, files in similarities.items():
+            # print(similarity)
+            # print(threshold)
             if similarity > threshold:
                 for file1, file2 in files:
+                    # print(file1)
+                    # print(file2)
                     f.write(file1[3:])
                     f.write('\n')
                     f.write(file2[3:])
                     f.write('\n\n')
     
     threshold += step
-    threshold = round(threshold, 2)
+    threshold = round(threshold, 3)
 

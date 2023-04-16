@@ -12,12 +12,19 @@ def read_pairs_file(filename):
     return pairs
 
 def compute_overlap_percent(set1, set2, set1_name):
-    intersection = set1.intersection(set2)
+    set1_frozen = {frozenset(pair) for pair in set1}
+    set2_frozen = {frozenset(pair) for pair in set2}
+    intersection = {tuple(pair) for pair in (set1_frozen & set2_frozen)}
+    # print('\n')
+    # print(set1)
+    # print(set2)
+    # print("intersection: " + str(intersection))
 
-    if len(set1) and len(set2) == 0:
+
+    if len(set1) == 0 and len(set2) == 0:
         overlap_percent = 100
     elif len(set1) == 0:
-        overlap_percent = 1
+        overlap_percent = 0
     elif len(set2) == 0:
         overlap_percent = 0
     else:
@@ -27,15 +34,19 @@ def compute_overlap_percent(set1, set2, set1_name):
 
 lsh_pair_file = f"../{sys.argv[1]}"
 benchmarking_folder = '../outputs/'
-benchmarking_file_prefix = 'benchmark_pairs'
+benchmarking_file_addon = sys.argv[2]
 
-print('Compute accuracy file: ')
-print('LSH: ' + lsh_pair_file)
-print("Benchmarking: " + benchmarking_file_prefix)
-print('\n')
+if len(benchmarking_file_addon) > 0:
+    benchmarking_file_prefix = 'benchmark_pairs' + '_' + benchmarking_file_addon + '_'
+else:
+    benchmarking_file_prefix = 'benchmark_pairs'
 
-print("Precision: Percentage of detected documents that are actually plagiarized")
-print("Recall: Percentage of actually plagiarized docs that we detected")
+# print('LSH:                       ' + lsh_pair_file)
+# print("Benchmarking files prefix: " + benchmarking_file_prefix)
+# print('\n')
+
+# print("Precision: Percentage of detected documents that are actually plagiarized")
+# print("Recall: Percentage of actually plagiarized docs that we detected")
 
 for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
     for filename in filenames:
@@ -45,14 +56,14 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
             lsh_pairs = read_pairs_file(lsh_pair_file)
             benchmarking_pairs = read_pairs_file(file_path)
 
-            # print("Num LSH pairs:          " + str(len(lsh_pairs)))
-            # print("Num benchmarking pairs: " + str(len(benchmarking_pairs)))
+            jaccard = filename[-7:-4]
+            print("Jaccard:   " + str(jaccard))
+
+            print("Num LSH pairs:          " + str(len(lsh_pairs)))
+            print("Num benchmarking pairs: " + str(len(benchmarking_pairs)))
 
             precision = compute_overlap_percent(lsh_pairs, benchmarking_pairs, "lsh")
             recall = compute_overlap_percent(benchmarking_pairs, lsh_pairs, "benchmarking")
 
-            jaccard = float(filename.split("_")[2].split(".")[0] + "." + filename.split("_")[2].split(".")[1])
-
-            print("Jaccard:   " + str(jaccard))
-            print(f"Precision: {round(precision)}%")
-            print(f"Recall:    {round(recall)}%\n")
+            print(f"Precision:    {round(precision)}%")
+            print(f"Recall:       {round(recall)}%\n")

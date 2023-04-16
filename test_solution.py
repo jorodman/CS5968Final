@@ -12,20 +12,14 @@ def parse_cmd_line(args):
         'k': '10',
         'num_hash_functions': '10',
         'partition_length': '2',
-        'document_folder': 'plagiarized_documents',
-        'hash_table_file': 'outputs/hash_table_plagiarized.txt',
-        'pair_file': 'outputs/plagiarized_pairs.txt',
+        'document_folder': 'documents',
+        'hash_table_file': 'outputs/hash_table.txt',
+        'pair_file': 'outputs/pairs.txt',
         'benchmarking_file_add_on': '',
     }
 
     for arg in args[1:]:
-        if arg == "--b":
-            # response = input('Are you sure you want to compute benchmarking? It will take a couple of minutes... (yes or no)\n')
-            # if 'yes' in response:
-                configs['compute_benchmarking'] = True
-            # response = input('Type in the benchmarking file add on (if wanted): \n')
-            # configs['benchmarking_file_add_on'] = response
-        elif arg.startswith("--k="):
+        if arg.startswith("--k="):
             configs['k'] = arg.split("=")[1]
         elif arg.startswith("--h="):
             configs['num_hash_functions'] = arg.split("=")[1]
@@ -33,10 +27,14 @@ def parse_cmd_line(args):
             configs['partition_length'] = arg.split("=")[1]
         elif arg.startswith("--d="):
             configs['document_folder'] = arg.split("=")[1]
-        elif arg.startswith("--hf="):
-            configs['hash_table_file'] = arg.split("=")[1]
-        elif arg.startswith("--pf="):
-            configs['pairs_file'] = arg.split("=")[1]
+        elif arg.startswith("--b"):
+            response = input('Are you sure you want to compute benchmarking? It will take a couple of minutes... (yes or no)\n')
+            if 'yes' in response:
+                configs['compute_benchmarking'] = True
+        elif arg.startswith("--o="):
+            configs['hash_table_file'] = f"outputs/hash_table_{arg.split('=')[1]}.txt"
+            configs['pair_file'] = f"outputs/pairs_{arg.split('=')[1]}.txt"
+            configs['benchmarking_file_add_on'] = f"{arg.split('=')[1]}"
 
     return configs
 
@@ -57,7 +55,7 @@ def run_benchmarking(configs):
     benchmarking_timer.print_elapsed_time()
 
 def compute_accuracy():
-    subprocess.run(["python3", "compute_accuracy.py", configs['pair_file']], cwd="python_helpers")
+    subprocess.run(["python3", "compute_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on']], cwd="python_helpers")
 
 
 # MAIN

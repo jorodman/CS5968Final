@@ -70,7 +70,6 @@ void write_hash_table_to_file(unordered_multimap<uint64_t, string> hash_table, s
 {
     ofstream outfile(file_name);
     unordered_set<uint64_t> visited;
-    unordered_set<string> docs_to_test;
     for (mm_it it = hash_table.begin(); it != hash_table.end(); it++){
         uint64_t key = it->first;
         
@@ -85,7 +84,6 @@ void write_hash_table_to_file(unordered_multimap<uint64_t, string> hash_table, s
                 for (auto pair = range.first; pair != range.second; ++pair) {
                     string doc_name = pair->second;
                     outfile << doc_name << endl;
-                    docs_to_test.insert(pair->second);
                 }
                 outfile << endl;
             }
