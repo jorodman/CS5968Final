@@ -52,6 +52,21 @@ int main(int argc, char *argv[]){
         num_hash_functions = atoi(argv[2]);
         partition_length = atoi(argv[3]);
     }
+    else if(argc == 5)
+    {
+        chars_per_k_gram = atoi(argv[1]);
+        num_hash_functions = atoi(argv[2]);
+        partition_length = atoi(argv[3]);
+        document_folder = argv[4];
+    }
+    else if(argc == 6)
+    {
+        chars_per_k_gram = atoi(argv[1]);
+        num_hash_functions = atoi(argv[2]);
+        partition_length = atoi(argv[3]);
+        document_folder = argv[4];
+        output_file = argv[5];
+    }
 
     cout << endl;
     cout << "Running plagiarism detection with the following params:" << endl;
@@ -68,7 +83,6 @@ int main(int argc, char *argv[]){
 
     pd->run();
     
-
     write_hash_table_to_file(pd->get_hash_table(), output_file);
 
     return 0;
