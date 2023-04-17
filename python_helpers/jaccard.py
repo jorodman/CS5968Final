@@ -26,8 +26,9 @@ def compare_files(file1, file2, k):
     similarity = len(common_k_grams) / len(union_k_grams)
     return similarity
 
-def compare_all_files(folder, k):
+def compare_all_files(folder, k, file_filter):
     files = [os.path.join(folder, file) for file in os.listdir(folder)]
+    files = [x for x in files if file_filter in x]
     similarities = collections.defaultdict(list)
     for file1, file2 in itertools.combinations(files, 2):
         similarity = compare_files(file1, file2, k)
@@ -47,7 +48,8 @@ def remove_newlines(folder_path):
 
 K = 6
 folder = "DOCUMENTS/chatGPT"
-threshold = 0.1
+threshold = 0.7
+file_filter = 'txt'
 
 if len(sys.argv) == 2:
     K = int(sys.argv[1])
@@ -57,10 +59,15 @@ elif len(sys.argv) == 3:
 elif len(sys.argv) == 4:
     K = int(sys.argv[1])
     threshold = float(sys.argv[2])
-    folder = f"../{sys.argv[3]}"
+    folder = f"{sys.argv[3]}"
+elif len(sys.argv) == 5:
+    K = int(sys.argv[1])
+    threshold = float(sys.argv[2])
+    folder = f"{sys.argv[3]}"
+    file_filter = f"{sys.argv[4]}"
 
 
-similarities = compare_all_files(folder, K)
+similarities = compare_all_files(folder, K, file_filter)
 max_similarity = max(similarities.keys())
 min_similarity = min(similarities.keys())
 
@@ -77,12 +84,11 @@ for similarity, files in similarities.items():
         less += 1
     elif similarity >= threshold:
         greater += 1
-    # print(similarity)
 
 num_elements = len(similarities.keys())
 percent_less = round(less / num_elements, 2)
 percent_greater = round(greater / num_elements, 2)
 
-print('Less:    ' + str(percent_less))
-print('Greater: ' + str(percent_greater))
+print('Less:        ' + str(percent_less))
+print('Greater:     ' + str(percent_greater))
 

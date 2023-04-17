@@ -1,585 +1,498 @@
-DOCUMENTS/all_documents/ChatD1.txt
-DOCUMENTS/all_documents/ChatD2.txt
+DOCUMENTS/chatGPT/ChatD4.txt
+DOCUMENTS/chatGPT/ChatD5.txt
 
-DOCUMENTS/all_documents/ChatD1.txt
-DOCUMENTS/all_documents/ChatD3.txt
+DOCUMENTS/chatGPT/ChatD4.txt
+DOCUMENTS/chatGPT/ChatD1.txt
 
-DOCUMENTS/all_documents/ChatD1.txt
-DOCUMENTS/all_documents/ChatD4.txt
+DOCUMENTS/chatGPT/ChatD4.txt
+DOCUMENTS/chatGPT/ChatD2.txt
 
-DOCUMENTS/all_documents/ChatD1.txt
-DOCUMENTS/all_documents/baseball-0.txt
+DOCUMENTS/chatGPT/ChatD4.txt
+DOCUMENTS/chatGPT/ChatD8.txt
 
-DOCUMENTS/all_documents/ChatD1.txt
-DOCUMENTS/all_documents/baseball-1.txt
+DOCUMENTS/chatGPT/ChatD4.txt
+DOCUMENTS/chatGPT/ChatD0.txt
 
-DOCUMENTS/all_documents/ChatD1.txt
-DOCUMENTS/all_documents/baseball-2.txt
+DOCUMENTS/chatGPT/ChatD4.txt
+DOCUMENTS/chatGPT/ChatD9.txt
 
-DOCUMENTS/all_documents/ChatD1.txt
-DOCUMENTS/all_documents/baseball-3.txt
+DOCUMENTS/chatGPT/ChatD3.txt
+DOCUMENTS/chatGPT/ChatD5.txt
 
-DOCUMENTS/all_documents/ChatD1.txt
-DOCUMENTS/all_documents/baseball-4.txt
+DOCUMENTS/chatGPT/ChatD3.txt
+DOCUMENTS/chatGPT/ChatD1.txt
 
-DOCUMENTS/all_documents/ChatD1.txt
-DOCUMENTS/all_documents/baseball-5.txt
+DOCUMENTS/chatGPT/ChatD3.txt
+DOCUMENTS/chatGPT/ChatD2.txt
 
-DOCUMENTS/all_documents/ChatD1.txt
-DOCUMENTS/all_documents/baseball-6.txt
+DOCUMENTS/chatGPT/ChatD3.txt
+DOCUMENTS/chatGPT/ChatD6.txt
 
-DOCUMENTS/all_documents/ChatD1.txt
-DOCUMENTS/all_documents/baseball-7.txt
+DOCUMENTS/chatGPT/ChatD3.txt
+DOCUMENTS/chatGPT/ChatD9.txt
 
-DOCUMENTS/all_documents/ChatD1.txt
-DOCUMENTS/all_documents/baseball-8.txt
+DOCUMENTS/chatGPT/ChatD3.txt
+DOCUMENTS/chatGPT/ChatD7.txt
 
-DOCUMENTS/all_documents/ChatD1.txt
-DOCUMENTS/all_documents/baseball-9.txt
+DOCUMENTS/chatGPT/ChatD5.txt
+DOCUMENTS/chatGPT/ChatD1.txt
 
-DOCUMENTS/all_documents/ChatD2.txt
-DOCUMENTS/all_documents/ChatD3.txt
+DOCUMENTS/chatGPT/ChatD5.txt
+DOCUMENTS/chatGPT/ChatD2.txt
 
-DOCUMENTS/all_documents/ChatD2.txt
-DOCUMENTS/all_documents/ChatD4.txt
+DOCUMENTS/chatGPT/ChatD5.txt
+DOCUMENTS/chatGPT/ChatD6.txt
 
-DOCUMENTS/all_documents/baseball-0.txt
-DOCUMENTS/all_documents/baseball-1.txt
+DOCUMENTS/chatGPT/ChatD5.txt
+DOCUMENTS/chatGPT/ChatD8.txt
 
-DOCUMENTS/all_documents/baseball-0.txt
-DOCUMENTS/all_documents/baseball-2.txt
+DOCUMENTS/chatGPT/ChatD5.txt
+DOCUMENTS/chatGPT/ChatD9.txt
 
-DOCUMENTS/all_documents/baseball-5.txt
-DOCUMENTS/all_documents/baseball-9.txt
+DOCUMENTS/chatGPT/ChatD5.txt
+DOCUMENTS/chatGPT/ChatD7.txt
 
-DOCUMENTS/all_documents/baseball-0.txt
-DOCUMENTS/all_documents/baseball-3.txt
+DOCUMENTS/chatGPT/ChatD1.txt
+DOCUMENTS/chatGPT/ChatD2.txt
 
-DOCUMENTS/all_documents/baseball-0.txt
-DOCUMENTS/all_documents/baseball-4.txt
+DOCUMENTS/chatGPT/ChatD1.txt
+DOCUMENTS/chatGPT/ChatD8.txt
 
-DOCUMENTS/all_documents/baseball-0.txt
-DOCUMENTS/all_documents/baseball-5.txt
+DOCUMENTS/chatGPT/ChatD1.txt
+DOCUMENTS/chatGPT/ChatD9.txt
 
-DOCUMENTS/all_documents/baseball-0.txt
-DOCUMENTS/all_documents/baseball-6.txt
+DOCUMENTS/chatGPT/ChatD2.txt
+DOCUMENTS/chatGPT/ChatD8.txt
 
-DOCUMENTS/all_documents/baseball-0.txt
-DOCUMENTS/all_documents/baseball-7.txt
+DOCUMENTS/chatGPT/ChatD2.txt
+DOCUMENTS/chatGPT/ChatD9.txt
 
-DOCUMENTS/all_documents/baseball-0.txt
-DOCUMENTS/all_documents/baseball-8.txt
+DOCUMENTS/chatGPT/ChatD2.txt
+DOCUMENTS/chatGPT/ChatD7.txt
 
-DOCUMENTS/all_documents/baseball-1.txt
-DOCUMENTS/all_documents/baseball-2.txt
+DOCUMENTS/chatGPT/ChatD6.txt
+DOCUMENTS/chatGPT/ChatD7.txt
 
-DOCUMENTS/all_documents/baseball-6.txt
-DOCUMENTS/all_documents/baseball-7.txt
+DOCUMENTS/chatGPT/ChatD8.txt
+DOCUMENTS/chatGPT/ChatD0.txt
 
-DOCUMENTS/all_documents/baseball-0.txt
-DOCUMENTS/all_documents/baseball-9.txt
+DOCUMENTS/chatGPT/ChatD8.txt
+DOCUMENTS/chatGPT/ChatD9.txt
 
-DOCUMENTS/all_documents/baseball-1.txt
-DOCUMENTS/all_documents/baseball-3.txt
+DOCUMENTS/chatGPT/ChatD8.txt
+DOCUMENTS/chatGPT/ChatD7.txt
 
-DOCUMENTS/all_documents/baseball-1.txt
-DOCUMENTS/all_documents/baseball-4.txt
+DOCUMENTS/chatGPT/ChatD0.txt
+DOCUMENTS/chatGPT/ChatD9.txt
 
-DOCUMENTS/all_documents/baseball-1.txt
-DOCUMENTS/all_documents/baseball-5.txt
+DOCUMENTS/paraphrased_output_docs/guitar-0.txt
+DOCUMENTS/paraphrased_output_docs/guitar-1.txt
 
-DOCUMENTS/all_documents/baseball-2.txt
-DOCUMENTS/all_documents/baseball-6.txt
+DOCUMENTS/paraphrased_output_docs/guitar-0.txt
+DOCUMENTS/paraphrased_output_docs/guitar-2.txt
 
-DOCUMENTS/all_documents/baseball-1.txt
-DOCUMENTS/all_documents/baseball-6.txt
+DOCUMENTS/paraphrased_output_docs/guitar-0.txt
+DOCUMENTS/paraphrased_output_docs/guitar-3.txt
 
-DOCUMENTS/all_documents/baseball-1.txt
-DOCUMENTS/all_documents/baseball-7.txt
+DOCUMENTS/paraphrased_output_docs/guitar-0.txt
+DOCUMENTS/paraphrased_output_docs/guitar-4.txt
 
-DOCUMENTS/all_documents/baseball-1.txt
-DOCUMENTS/all_documents/baseball-8.txt
+DOCUMENTS/paraphrased_output_docs/guitar-0.txt
+DOCUMENTS/paraphrased_output_docs/guitar-5.txt
 
-DOCUMENTS/all_documents/baseball-1.txt
-DOCUMENTS/all_documents/baseball-9.txt
+DOCUMENTS/paraphrased_output_docs/guitar-0.txt
+DOCUMENTS/paraphrased_output_docs/guitar-6.txt
 
-DOCUMENTS/all_documents/baseball-2.txt
-DOCUMENTS/all_documents/baseball-3.txt
+DOCUMENTS/paraphrased_output_docs/guitar-0.txt
+DOCUMENTS/paraphrased_output_docs/guitar-7.txt
 
-DOCUMENTS/all_documents/baseball-2.txt
-DOCUMENTS/all_documents/baseball-4.txt
+DOCUMENTS/paraphrased_output_docs/guitar-0.txt
+DOCUMENTS/paraphrased_output_docs/guitar-8.txt
 
-DOCUMENTS/all_documents/baseball-2.txt
-DOCUMENTS/all_documents/baseball-5.txt
+DOCUMENTS/paraphrased_output_docs/guitar-0.txt
+DOCUMENTS/paraphrased_output_docs/guitar-9.txt
 
-DOCUMENTS/all_documents/baseball-2.txt
-DOCUMENTS/all_documents/baseball-7.txt
+DOCUMENTS/paraphrased_output_docs/guitar-1.txt
+DOCUMENTS/paraphrased_output_docs/guitar-2.txt
 
-DOCUMENTS/all_documents/baseball-2.txt
-DOCUMENTS/all_documents/baseball-8.txt
+DOCUMENTS/paraphrased_output_docs/guitar-3.txt
+DOCUMENTS/paraphrased_output_docs/guitar-7.txt
 
-DOCUMENTS/all_documents/baseball-2.txt
-DOCUMENTS/all_documents/baseball-9.txt
+DOCUMENTS/paraphrased_output_docs/guitar-1.txt
+DOCUMENTS/paraphrased_output_docs/guitar-3.txt
 
-DOCUMENTS/all_documents/baseball-3.txt
-DOCUMENTS/all_documents/baseball-4.txt
+DOCUMENTS/paraphrased_output_docs/guitar-1.txt
+DOCUMENTS/paraphrased_output_docs/guitar-4.txt
 
-DOCUMENTS/all_documents/baseball-5.txt
-DOCUMENTS/all_documents/baseball-7.txt
+DOCUMENTS/paraphrased_output_docs/guitar-1.txt
+DOCUMENTS/paraphrased_output_docs/guitar-5.txt
 
-DOCUMENTS/all_documents/baseball-3.txt
-DOCUMENTS/all_documents/baseball-5.txt
+DOCUMENTS/paraphrased_output_docs/guitar-1.txt
+DOCUMENTS/paraphrased_output_docs/guitar-6.txt
 
-DOCUMENTS/all_documents/baseball-3.txt
-DOCUMENTS/all_documents/baseball-6.txt
+DOCUMENTS/paraphrased_output_docs/guitar-1.txt
+DOCUMENTS/paraphrased_output_docs/guitar-7.txt
 
-DOCUMENTS/all_documents/baseball-3.txt
-DOCUMENTS/all_documents/baseball-7.txt
+DOCUMENTS/paraphrased_output_docs/guitar-1.txt
+DOCUMENTS/paraphrased_output_docs/guitar-8.txt
 
-DOCUMENTS/all_documents/baseball-3.txt
-DOCUMENTS/all_documents/baseball-8.txt
+DOCUMENTS/paraphrased_output_docs/guitar-1.txt
+DOCUMENTS/paraphrased_output_docs/guitar-9.txt
 
-DOCUMENTS/all_documents/baseball-3.txt
-DOCUMENTS/all_documents/baseball-9.txt
+DOCUMENTS/paraphrased_output_docs/guitar-2.txt
+DOCUMENTS/paraphrased_output_docs/guitar-3.txt
 
-DOCUMENTS/all_documents/baseball-4.txt
-DOCUMENTS/all_documents/baseball-5.txt
+DOCUMENTS/paraphrased_output_docs/guitar-2.txt
+DOCUMENTS/paraphrased_output_docs/guitar-4.txt
 
-DOCUMENTS/all_documents/baseball-7.txt
-DOCUMENTS/all_documents/baseball-8.txt
+DOCUMENTS/paraphrased_output_docs/guitar-2.txt
+DOCUMENTS/paraphrased_output_docs/guitar-5.txt
 
-DOCUMENTS/all_documents/baseball-4.txt
-DOCUMENTS/all_documents/baseball-6.txt
+DOCUMENTS/paraphrased_output_docs/guitar-2.txt
+DOCUMENTS/paraphrased_output_docs/guitar-6.txt
 
-DOCUMENTS/all_documents/baseball-4.txt
-DOCUMENTS/all_documents/baseball-7.txt
+DOCUMENTS/paraphrased_output_docs/guitar-2.txt
+DOCUMENTS/paraphrased_output_docs/guitar-7.txt
 
-DOCUMENTS/all_documents/baseball-4.txt
-DOCUMENTS/all_documents/baseball-8.txt
+DOCUMENTS/paraphrased_output_docs/guitar-2.txt
+DOCUMENTS/paraphrased_output_docs/guitar-8.txt
 
-DOCUMENTS/all_documents/baseball-4.txt
-DOCUMENTS/all_documents/baseball-9.txt
+DOCUMENTS/paraphrased_output_docs/guitar-2.txt
+DOCUMENTS/paraphrased_output_docs/guitar-9.txt
 
-DOCUMENTS/all_documents/baseball-5.txt
-DOCUMENTS/all_documents/baseball-6.txt
+DOCUMENTS/paraphrased_output_docs/guitar-3.txt
+DOCUMENTS/paraphrased_output_docs/guitar-4.txt
 
-DOCUMENTS/all_documents/baseball-5.txt
-DOCUMENTS/all_documents/baseball-8.txt
+DOCUMENTS/paraphrased_output_docs/guitar-3.txt
+DOCUMENTS/paraphrased_output_docs/guitar-5.txt
 
-DOCUMENTS/all_documents/baseball-6.txt
-DOCUMENTS/all_documents/baseball-8.txt
+DOCUMENTS/paraphrased_output_docs/guitar-3.txt
+DOCUMENTS/paraphrased_output_docs/guitar-6.txt
 
-DOCUMENTS/all_documents/baseball-6.txt
-DOCUMENTS/all_documents/baseball-9.txt
+DOCUMENTS/paraphrased_output_docs/guitar-3.txt
+DOCUMENTS/paraphrased_output_docs/guitar-8.txt
 
-DOCUMENTS/all_documents/baseball-7.txt
-DOCUMENTS/all_documents/baseball-9.txt
+DOCUMENTS/paraphrased_output_docs/guitar-3.txt
+DOCUMENTS/paraphrased_output_docs/guitar-9.txt
 
-DOCUMENTS/all_documents/baseball-8.txt
-DOCUMENTS/all_documents/baseball-9.txt
+DOCUMENTS/paraphrased_output_docs/guitar-4.txt
+DOCUMENTS/paraphrased_output_docs/guitar-5.txt
 
-DOCUMENTS/all_documents/climbing-0.txt
-DOCUMENTS/all_documents/climbing-1.txt
+DOCUMENTS/paraphrased_output_docs/guitar-4.txt
+DOCUMENTS/paraphrased_output_docs/guitar-6.txt
 
-DOCUMENTS/all_documents/climbing-0.txt
-DOCUMENTS/all_documents/climbing-2.txt
+DOCUMENTS/paraphrased_output_docs/guitar-4.txt
+DOCUMENTS/paraphrased_output_docs/guitar-7.txt
 
-DOCUMENTS/all_documents/climbing-0.txt
-DOCUMENTS/all_documents/climbing-3.txt
+DOCUMENTS/paraphrased_output_docs/guitar-4.txt
+DOCUMENTS/paraphrased_output_docs/guitar-8.txt
 
-DOCUMENTS/all_documents/climbing-0.txt
-DOCUMENTS/all_documents/climbing-4.txt
+DOCUMENTS/paraphrased_output_docs/guitar-4.txt
+DOCUMENTS/paraphrased_output_docs/guitar-9.txt
 
-DOCUMENTS/all_documents/climbing-0.txt
-DOCUMENTS/all_documents/climbing-5.txt
+DOCUMENTS/paraphrased_output_docs/guitar-5.txt
+DOCUMENTS/paraphrased_output_docs/guitar-6.txt
 
-DOCUMENTS/all_documents/climbing-0.txt
-DOCUMENTS/all_documents/climbing-6.txt
+DOCUMENTS/paraphrased_output_docs/guitar-5.txt
+DOCUMENTS/paraphrased_output_docs/guitar-7.txt
 
-DOCUMENTS/all_documents/climbing-2.txt
-DOCUMENTS/all_documents/climbing-8.txt
+DOCUMENTS/paraphrased_output_docs/guitar-5.txt
+DOCUMENTS/paraphrased_output_docs/guitar-8.txt
 
-DOCUMENTS/all_documents/climbing-0.txt
-DOCUMENTS/all_documents/climbing-7.txt
+DOCUMENTS/paraphrased_output_docs/guitar-5.txt
+DOCUMENTS/paraphrased_output_docs/guitar-9.txt
 
-DOCUMENTS/all_documents/climbing-0.txt
-DOCUMENTS/all_documents/climbing-8.txt
+DOCUMENTS/paraphrased_output_docs/guitar-6.txt
+DOCUMENTS/paraphrased_output_docs/guitar-7.txt
 
-DOCUMENTS/all_documents/climbing-0.txt
-DOCUMENTS/all_documents/climbing-9.txt
+DOCUMENTS/paraphrased_output_docs/guitar-6.txt
+DOCUMENTS/paraphrased_output_docs/guitar-8.txt
 
-DOCUMENTS/all_documents/climbing-1.txt
-DOCUMENTS/all_documents/climbing-2.txt
+DOCUMENTS/paraphrased_output_docs/guitar-6.txt
+DOCUMENTS/paraphrased_output_docs/guitar-9.txt
 
-DOCUMENTS/all_documents/climbing-1.txt
-DOCUMENTS/all_documents/climbing-3.txt
+DOCUMENTS/paraphrased_output_docs/guitar-7.txt
+DOCUMENTS/paraphrased_output_docs/guitar-8.txt
 
-DOCUMENTS/all_documents/climbing-1.txt
-DOCUMENTS/all_documents/climbing-4.txt
+DOCUMENTS/paraphrased_output_docs/guitar-7.txt
+DOCUMENTS/paraphrased_output_docs/guitar-9.txt
 
-DOCUMENTS/all_documents/climbing-1.txt
-DOCUMENTS/all_documents/climbing-5.txt
+DOCUMENTS/paraphrased_output_docs/guitar-8.txt
+DOCUMENTS/paraphrased_output_docs/guitar-9.txt
 
-DOCUMENTS/all_documents/climbing-1.txt
-DOCUMENTS/all_documents/climbing-6.txt
+DOCUMENTS/paraphrased_output_docs/climbing-0.txt
+DOCUMENTS/paraphrased_output_docs/climbing-1.txt
 
-DOCUMENTS/all_documents/climbing-1.txt
-DOCUMENTS/all_documents/climbing-7.txt
+DOCUMENTS/paraphrased_output_docs/climbing-0.txt
+DOCUMENTS/paraphrased_output_docs/climbing-2.txt
 
-DOCUMENTS/all_documents/climbing-1.txt
-DOCUMENTS/all_documents/climbing-8.txt
+DOCUMENTS/paraphrased_output_docs/climbing-0.txt
+DOCUMENTS/paraphrased_output_docs/climbing-9.txt
 
-DOCUMENTS/all_documents/climbing-1.txt
-DOCUMENTS/all_documents/climbing-9.txt
+DOCUMENTS/paraphrased_output_docs/climbing-3.txt
+DOCUMENTS/paraphrased_output_docs/climbing-6.txt
 
-DOCUMENTS/all_documents/climbing-2.txt
-DOCUMENTS/all_documents/climbing-3.txt
+DOCUMENTS/paraphrased_output_docs/climbing-0.txt
+DOCUMENTS/paraphrased_output_docs/climbing-3.txt
 
-DOCUMENTS/all_documents/climbing-2.txt
-DOCUMENTS/all_documents/climbing-4.txt
+DOCUMENTS/paraphrased_output_docs/climbing-0.txt
+DOCUMENTS/paraphrased_output_docs/climbing-4.txt
 
-DOCUMENTS/all_documents/climbing-2.txt
-DOCUMENTS/all_documents/climbing-5.txt
+DOCUMENTS/paraphrased_output_docs/climbing-2.txt
+DOCUMENTS/paraphrased_output_docs/climbing-3.txt
 
-DOCUMENTS/all_documents/climbing-2.txt
-DOCUMENTS/all_documents/climbing-6.txt
+DOCUMENTS/paraphrased_output_docs/climbing-0.txt
+DOCUMENTS/paraphrased_output_docs/climbing-5.txt
 
-DOCUMENTS/all_documents/climbing-2.txt
-DOCUMENTS/all_documents/climbing-7.txt
+DOCUMENTS/paraphrased_output_docs/climbing-0.txt
+DOCUMENTS/paraphrased_output_docs/climbing-6.txt
 
-DOCUMENTS/all_documents/climbing-2.txt
-DOCUMENTS/all_documents/climbing-9.txt
+DOCUMENTS/paraphrased_output_docs/climbing-0.txt
+DOCUMENTS/paraphrased_output_docs/climbing-7.txt
 
-DOCUMENTS/all_documents/climbing-3.txt
-DOCUMENTS/all_documents/climbing-4.txt
+DOCUMENTS/paraphrased_output_docs/climbing-3.txt
+DOCUMENTS/paraphrased_output_docs/climbing-8.txt
 
-DOCUMENTS/all_documents/climbing-3.txt
-DOCUMENTS/all_documents/climbing-5.txt
+DOCUMENTS/paraphrased_output_docs/climbing-0.txt
+DOCUMENTS/paraphrased_output_docs/climbing-8.txt
 
-DOCUMENTS/all_documents/climbing-3.txt
-DOCUMENTS/all_documents/climbing-6.txt
+DOCUMENTS/paraphrased_output_docs/climbing-1.txt
+DOCUMENTS/paraphrased_output_docs/climbing-2.txt
 
-DOCUMENTS/all_documents/climbing-4.txt
-DOCUMENTS/all_documents/climbing-5.txt
+DOCUMENTS/paraphrased_output_docs/climbing-1.txt
+DOCUMENTS/paraphrased_output_docs/climbing-3.txt
 
-DOCUMENTS/all_documents/climbing-3.txt
-DOCUMENTS/all_documents/climbing-7.txt
+DOCUMENTS/paraphrased_output_docs/climbing-1.txt
+DOCUMENTS/paraphrased_output_docs/climbing-9.txt
 
-DOCUMENTS/all_documents/climbing-3.txt
-DOCUMENTS/all_documents/climbing-8.txt
+DOCUMENTS/paraphrased_output_docs/climbing-1.txt
+DOCUMENTS/paraphrased_output_docs/climbing-4.txt
 
-DOCUMENTS/all_documents/climbing-3.txt
-DOCUMENTS/all_documents/climbing-9.txt
+DOCUMENTS/paraphrased_output_docs/climbing-1.txt
+DOCUMENTS/paraphrased_output_docs/climbing-5.txt
 
-DOCUMENTS/all_documents/climbing-4.txt
-DOCUMENTS/all_documents/climbing-6.txt
+DOCUMENTS/paraphrased_output_docs/climbing-1.txt
+DOCUMENTS/paraphrased_output_docs/climbing-6.txt
 
-DOCUMENTS/all_documents/climbing-4.txt
-DOCUMENTS/all_documents/climbing-7.txt
+DOCUMENTS/paraphrased_output_docs/climbing-1.txt
+DOCUMENTS/paraphrased_output_docs/climbing-7.txt
 
-DOCUMENTS/all_documents/climbing-4.txt
-DOCUMENTS/all_documents/climbing-8.txt
+DOCUMENTS/paraphrased_output_docs/climbing-1.txt
+DOCUMENTS/paraphrased_output_docs/climbing-8.txt
 
-DOCUMENTS/all_documents/climbing-4.txt
-DOCUMENTS/all_documents/climbing-9.txt
+DOCUMENTS/paraphrased_output_docs/climbing-2.txt
+DOCUMENTS/paraphrased_output_docs/climbing-4.txt
 
-DOCUMENTS/all_documents/climbing-5.txt
-DOCUMENTS/all_documents/climbing-6.txt
+DOCUMENTS/paraphrased_output_docs/climbing-2.txt
+DOCUMENTS/paraphrased_output_docs/climbing-5.txt
 
-DOCUMENTS/all_documents/climbing-5.txt
-DOCUMENTS/all_documents/climbing-7.txt
+DOCUMENTS/paraphrased_output_docs/climbing-3.txt
+DOCUMENTS/paraphrased_output_docs/climbing-5.txt
 
-DOCUMENTS/all_documents/climbing-5.txt
-DOCUMENTS/all_documents/climbing-8.txt
+DOCUMENTS/paraphrased_output_docs/climbing-2.txt
+DOCUMENTS/paraphrased_output_docs/climbing-6.txt
 
-DOCUMENTS/all_documents/climbing-5.txt
-DOCUMENTS/all_documents/climbing-9.txt
+DOCUMENTS/paraphrased_output_docs/climbing-2.txt
+DOCUMENTS/paraphrased_output_docs/climbing-7.txt
 
-DOCUMENTS/all_documents/climbing-6.txt
-DOCUMENTS/all_documents/climbing-7.txt
+DOCUMENTS/paraphrased_output_docs/climbing-2.txt
+DOCUMENTS/paraphrased_output_docs/climbing-8.txt
 
-DOCUMENTS/all_documents/climbing-6.txt
-DOCUMENTS/all_documents/climbing-8.txt
+DOCUMENTS/paraphrased_output_docs/climbing-2.txt
+DOCUMENTS/paraphrased_output_docs/climbing-9.txt
 
-DOCUMENTS/all_documents/climbing-6.txt
-DOCUMENTS/all_documents/climbing-9.txt
+DOCUMENTS/paraphrased_output_docs/climbing-3.txt
+DOCUMENTS/paraphrased_output_docs/climbing-4.txt
 
-DOCUMENTS/all_documents/climbing-7.txt
-DOCUMENTS/all_documents/climbing-8.txt
+DOCUMENTS/paraphrased_output_docs/climbing-3.txt
+DOCUMENTS/paraphrased_output_docs/climbing-7.txt
 
-DOCUMENTS/all_documents/climbing-7.txt
-DOCUMENTS/all_documents/climbing-9.txt
+DOCUMENTS/paraphrased_output_docs/climbing-6.txt
+DOCUMENTS/paraphrased_output_docs/climbing-9.txt
 
-DOCUMENTS/all_documents/climbing-8.txt
-DOCUMENTS/all_documents/climbing-9.txt
+DOCUMENTS/paraphrased_output_docs/climbing-3.txt
+DOCUMENTS/paraphrased_output_docs/climbing-9.txt
 
-DOCUMENTS/all_documents/coding-0.txt
-DOCUMENTS/all_documents/coding-1.txt
+DOCUMENTS/paraphrased_output_docs/climbing-4.txt
+DOCUMENTS/paraphrased_output_docs/climbing-5.txt
 
-DOCUMENTS/all_documents/coding-0.txt
-DOCUMENTS/all_documents/coding-2.txt
+DOCUMENTS/paraphrased_output_docs/climbing-4.txt
+DOCUMENTS/paraphrased_output_docs/climbing-6.txt
 
-DOCUMENTS/all_documents/coding-0.txt
-DOCUMENTS/all_documents/coding-3.txt
+DOCUMENTS/paraphrased_output_docs/climbing-4.txt
+DOCUMENTS/paraphrased_output_docs/climbing-7.txt
 
-DOCUMENTS/all_documents/coding-0.txt
-DOCUMENTS/all_documents/coding-4.txt
+DOCUMENTS/paraphrased_output_docs/climbing-4.txt
+DOCUMENTS/paraphrased_output_docs/climbing-8.txt
 
-DOCUMENTS/all_documents/coding-0.txt
-DOCUMENTS/all_documents/coding-5.txt
+DOCUMENTS/paraphrased_output_docs/climbing-4.txt
+DOCUMENTS/paraphrased_output_docs/climbing-9.txt
 
-DOCUMENTS/all_documents/coding-2.txt
-DOCUMENTS/all_documents/coding-8.txt
+DOCUMENTS/paraphrased_output_docs/climbing-5.txt
+DOCUMENTS/paraphrased_output_docs/climbing-6.txt
 
-DOCUMENTS/all_documents/coding-0.txt
-DOCUMENTS/all_documents/coding-6.txt
+DOCUMENTS/paraphrased_output_docs/climbing-5.txt
+DOCUMENTS/paraphrased_output_docs/climbing-7.txt
 
-DOCUMENTS/all_documents/coding-0.txt
-DOCUMENTS/all_documents/coding-7.txt
+DOCUMENTS/paraphrased_output_docs/climbing-5.txt
+DOCUMENTS/paraphrased_output_docs/climbing-8.txt
 
-DOCUMENTS/all_documents/coding-0.txt
-DOCUMENTS/all_documents/coding-8.txt
+DOCUMENTS/paraphrased_output_docs/climbing-5.txt
+DOCUMENTS/paraphrased_output_docs/climbing-9.txt
 
-DOCUMENTS/all_documents/coding-0.txt
-DOCUMENTS/all_documents/coding-9.txt
+DOCUMENTS/paraphrased_output_docs/climbing-6.txt
+DOCUMENTS/paraphrased_output_docs/climbing-7.txt
 
-DOCUMENTS/all_documents/coding-1.txt
-DOCUMENTS/all_documents/coding-2.txt
+DOCUMENTS/paraphrased_output_docs/climbing-6.txt
+DOCUMENTS/paraphrased_output_docs/climbing-8.txt
 
-DOCUMENTS/all_documents/coding-1.txt
-DOCUMENTS/all_documents/coding-3.txt
+DOCUMENTS/paraphrased_output_docs/climbing-7.txt
+DOCUMENTS/paraphrased_output_docs/climbing-8.txt
 
-DOCUMENTS/all_documents/coding-1.txt
-DOCUMENTS/all_documents/coding-4.txt
+DOCUMENTS/paraphrased_output_docs/climbing-7.txt
+DOCUMENTS/paraphrased_output_docs/climbing-9.txt
 
-DOCUMENTS/all_documents/coding-1.txt
-DOCUMENTS/all_documents/coding-5.txt
+DOCUMENTS/paraphrased_output_docs/climbing-8.txt
+DOCUMENTS/paraphrased_output_docs/climbing-9.txt
 
-DOCUMENTS/all_documents/coding-6.txt
-DOCUMENTS/all_documents/coding-7.txt
+DOCUMENTS/paraphrased_output_docs/coding-0.txt
+DOCUMENTS/paraphrased_output_docs/coding-1.txt
 
-DOCUMENTS/all_documents/coding-1.txt
-DOCUMENTS/all_documents/coding-6.txt
+DOCUMENTS/paraphrased_output_docs/coding-0.txt
+DOCUMENTS/paraphrased_output_docs/coding-2.txt
 
-DOCUMENTS/all_documents/coding-1.txt
-DOCUMENTS/all_documents/coding-7.txt
+DOCUMENTS/paraphrased_output_docs/coding-0.txt
+DOCUMENTS/paraphrased_output_docs/coding-3.txt
 
-DOCUMENTS/all_documents/coding-1.txt
-DOCUMENTS/all_documents/coding-8.txt
+DOCUMENTS/paraphrased_output_docs/coding-0.txt
+DOCUMENTS/paraphrased_output_docs/coding-4.txt
 
-DOCUMENTS/all_documents/coding-1.txt
-DOCUMENTS/all_documents/coding-9.txt
+DOCUMENTS/paraphrased_output_docs/coding-0.txt
+DOCUMENTS/paraphrased_output_docs/coding-5.txt
 
-DOCUMENTS/all_documents/coding-2.txt
-DOCUMENTS/all_documents/coding-3.txt
+DOCUMENTS/paraphrased_output_docs/coding-0.txt
+DOCUMENTS/paraphrased_output_docs/coding-6.txt
 
-DOCUMENTS/all_documents/coding-2.txt
-DOCUMENTS/all_documents/coding-4.txt
+DOCUMENTS/paraphrased_output_docs/coding-0.txt
+DOCUMENTS/paraphrased_output_docs/coding-7.txt
 
-DOCUMENTS/all_documents/coding-2.txt
-DOCUMENTS/all_documents/coding-5.txt
+DOCUMENTS/paraphrased_output_docs/coding-0.txt
+DOCUMENTS/paraphrased_output_docs/coding-8.txt
 
-DOCUMENTS/all_documents/coding-2.txt
-DOCUMENTS/all_documents/coding-6.txt
+DOCUMENTS/paraphrased_output_docs/coding-0.txt
+DOCUMENTS/paraphrased_output_docs/coding-9.txt
 
-DOCUMENTS/all_documents/coding-2.txt
-DOCUMENTS/all_documents/coding-7.txt
+DOCUMENTS/paraphrased_output_docs/coding-1.txt
+DOCUMENTS/paraphrased_output_docs/coding-2.txt
 
-DOCUMENTS/all_documents/coding-2.txt
-DOCUMENTS/all_documents/coding-9.txt
+DOCUMENTS/paraphrased_output_docs/coding-1.txt
+DOCUMENTS/paraphrased_output_docs/coding-3.txt
 
-DOCUMENTS/all_documents/coding-3.txt
-DOCUMENTS/all_documents/coding-4.txt
+DOCUMENTS/paraphrased_output_docs/coding-1.txt
+DOCUMENTS/paraphrased_output_docs/coding-4.txt
 
-DOCUMENTS/all_documents/coding-3.txt
-DOCUMENTS/all_documents/coding-5.txt
+DOCUMENTS/paraphrased_output_docs/coding-1.txt
+DOCUMENTS/paraphrased_output_docs/coding-5.txt
 
-DOCUMENTS/all_documents/coding-3.txt
-DOCUMENTS/all_documents/coding-6.txt
+DOCUMENTS/paraphrased_output_docs/coding-1.txt
+DOCUMENTS/paraphrased_output_docs/coding-6.txt
 
-DOCUMENTS/all_documents/coding-3.txt
-DOCUMENTS/all_documents/coding-7.txt
+DOCUMENTS/paraphrased_output_docs/coding-1.txt
+DOCUMENTS/paraphrased_output_docs/coding-7.txt
 
-DOCUMENTS/all_documents/coding-3.txt
-DOCUMENTS/all_documents/coding-8.txt
+DOCUMENTS/paraphrased_output_docs/coding-1.txt
+DOCUMENTS/paraphrased_output_docs/coding-8.txt
 
-DOCUMENTS/all_documents/coding-3.txt
-DOCUMENTS/all_documents/coding-9.txt
+DOCUMENTS/paraphrased_output_docs/coding-1.txt
+DOCUMENTS/paraphrased_output_docs/coding-9.txt
 
-DOCUMENTS/all_documents/coding-4.txt
-DOCUMENTS/all_documents/coding-5.txt
+DOCUMENTS/paraphrased_output_docs/coding-2.txt
+DOCUMENTS/paraphrased_output_docs/coding-3.txt
 
-DOCUMENTS/all_documents/coding-4.txt
-DOCUMENTS/all_documents/coding-6.txt
+DOCUMENTS/paraphrased_output_docs/coding-2.txt
+DOCUMENTS/paraphrased_output_docs/coding-4.txt
 
-DOCUMENTS/all_documents/coding-4.txt
-DOCUMENTS/all_documents/coding-7.txt
+DOCUMENTS/paraphrased_output_docs/coding-2.txt
+DOCUMENTS/paraphrased_output_docs/coding-5.txt
 
-DOCUMENTS/all_documents/coding-4.txt
-DOCUMENTS/all_documents/coding-8.txt
+DOCUMENTS/paraphrased_output_docs/coding-2.txt
+DOCUMENTS/paraphrased_output_docs/coding-6.txt
 
-DOCUMENTS/all_documents/coding-4.txt
-DOCUMENTS/all_documents/coding-9.txt
+DOCUMENTS/paraphrased_output_docs/coding-2.txt
+DOCUMENTS/paraphrased_output_docs/coding-7.txt
 
-DOCUMENTS/all_documents/coding-5.txt
-DOCUMENTS/all_documents/coding-6.txt
+DOCUMENTS/paraphrased_output_docs/coding-2.txt
+DOCUMENTS/paraphrased_output_docs/coding-8.txt
 
-DOCUMENTS/all_documents/coding-5.txt
-DOCUMENTS/all_documents/coding-7.txt
+DOCUMENTS/paraphrased_output_docs/coding-3.txt
+DOCUMENTS/paraphrased_output_docs/coding-5.txt
 
-DOCUMENTS/all_documents/coding-5.txt
-DOCUMENTS/all_documents/coding-8.txt
+DOCUMENTS/paraphrased_output_docs/coding-2.txt
+DOCUMENTS/paraphrased_output_docs/coding-9.txt
 
-DOCUMENTS/all_documents/coding-5.txt
-DOCUMENTS/all_documents/coding-9.txt
+DOCUMENTS/paraphrased_output_docs/coding-3.txt
+DOCUMENTS/paraphrased_output_docs/coding-4.txt
 
-DOCUMENTS/all_documents/coding-6.txt
-DOCUMENTS/all_documents/coding-8.txt
+DOCUMENTS/paraphrased_output_docs/coding-3.txt
+DOCUMENTS/paraphrased_output_docs/coding-6.txt
 
-DOCUMENTS/all_documents/coding-6.txt
-DOCUMENTS/all_documents/coding-9.txt
+DOCUMENTS/paraphrased_output_docs/coding-4.txt
+DOCUMENTS/paraphrased_output_docs/coding-5.txt
 
-DOCUMENTS/all_documents/coding-7.txt
-DOCUMENTS/all_documents/coding-8.txt
+DOCUMENTS/paraphrased_output_docs/coding-3.txt
+DOCUMENTS/paraphrased_output_docs/coding-7.txt
 
-DOCUMENTS/all_documents/coding-7.txt
-DOCUMENTS/all_documents/coding-9.txt
+DOCUMENTS/paraphrased_output_docs/coding-7.txt
+DOCUMENTS/paraphrased_output_docs/coding-9.txt
 
-DOCUMENTS/all_documents/coding-8.txt
-DOCUMENTS/all_documents/coding-9.txt
+DOCUMENTS/paraphrased_output_docs/coding-3.txt
+DOCUMENTS/paraphrased_output_docs/coding-8.txt
 
-DOCUMENTS/all_documents/guitar-0.txt
-DOCUMENTS/all_documents/guitar-1.txt
+DOCUMENTS/paraphrased_output_docs/coding-3.txt
+DOCUMENTS/paraphrased_output_docs/coding-9.txt
 
-DOCUMENTS/all_documents/guitar-0.txt
-DOCUMENTS/all_documents/guitar-2.txt
+DOCUMENTS/paraphrased_output_docs/coding-4.txt
+DOCUMENTS/paraphrased_output_docs/coding-6.txt
 
-DOCUMENTS/all_documents/guitar-0.txt
-DOCUMENTS/all_documents/guitar-3.txt
+DOCUMENTS/paraphrased_output_docs/coding-4.txt
+DOCUMENTS/paraphrased_output_docs/coding-7.txt
 
-DOCUMENTS/all_documents/guitar-0.txt
-DOCUMENTS/all_documents/guitar-4.txt
+DOCUMENTS/paraphrased_output_docs/coding-4.txt
+DOCUMENTS/paraphrased_output_docs/coding-8.txt
 
-DOCUMENTS/all_documents/guitar-1.txt
-DOCUMENTS/all_documents/guitar-4.txt
+DOCUMENTS/paraphrased_output_docs/coding-4.txt
+DOCUMENTS/paraphrased_output_docs/coding-9.txt
 
-DOCUMENTS/all_documents/guitar-0.txt
-DOCUMENTS/all_documents/guitar-5.txt
+DOCUMENTS/paraphrased_output_docs/coding-5.txt
+DOCUMENTS/paraphrased_output_docs/coding-6.txt
 
-DOCUMENTS/all_documents/guitar-0.txt
-DOCUMENTS/all_documents/guitar-6.txt
+DOCUMENTS/paraphrased_output_docs/coding-5.txt
+DOCUMENTS/paraphrased_output_docs/coding-7.txt
 
-DOCUMENTS/all_documents/guitar-0.txt
-DOCUMENTS/all_documents/guitar-7.txt
+DOCUMENTS/paraphrased_output_docs/coding-5.txt
+DOCUMENTS/paraphrased_output_docs/coding-8.txt
 
-DOCUMENTS/all_documents/guitar-1.txt
-DOCUMENTS/all_documents/guitar-5.txt
+DOCUMENTS/paraphrased_output_docs/coding-5.txt
+DOCUMENTS/paraphrased_output_docs/coding-9.txt
 
-DOCUMENTS/all_documents/guitar-0.txt
-DOCUMENTS/all_documents/guitar-8.txt
+DOCUMENTS/paraphrased_output_docs/coding-6.txt
+DOCUMENTS/paraphrased_output_docs/coding-7.txt
 
-DOCUMENTS/all_documents/guitar-0.txt
-DOCUMENTS/all_documents/guitar-9.txt
+DOCUMENTS/paraphrased_output_docs/coding-6.txt
+DOCUMENTS/paraphrased_output_docs/coding-8.txt
 
-DOCUMENTS/all_documents/guitar-1.txt
-DOCUMENTS/all_documents/guitar-2.txt
+DOCUMENTS/paraphrased_output_docs/coding-6.txt
+DOCUMENTS/paraphrased_output_docs/coding-9.txt
 
-DOCUMENTS/all_documents/guitar-1.txt
-DOCUMENTS/all_documents/guitar-3.txt
+DOCUMENTS/paraphrased_output_docs/coding-7.txt
+DOCUMENTS/paraphrased_output_docs/coding-8.txt
 
-DOCUMENTS/all_documents/guitar-1.txt
-DOCUMENTS/all_documents/guitar-6.txt
+DOCUMENTS/paraphrased_output_docs/coding-8.txt
+DOCUMENTS/paraphrased_output_docs/coding-9.txt
 
-DOCUMENTS/all_documents/guitar-1.txt
-DOCUMENTS/all_documents/guitar-7.txt
+DOCUMENTS/wikipedia_documents/D-42.txt
+DOCUMENTS/wikipedia_documents/D-177.txt
 
-DOCUMENTS/all_documents/guitar-1.txt
-DOCUMENTS/all_documents/guitar-8.txt
-
-DOCUMENTS/all_documents/guitar-1.txt
-DOCUMENTS/all_documents/guitar-9.txt
-
-DOCUMENTS/all_documents/guitar-2.txt
-DOCUMENTS/all_documents/guitar-3.txt
-
-DOCUMENTS/all_documents/guitar-2.txt
-DOCUMENTS/all_documents/guitar-4.txt
-
-DOCUMENTS/all_documents/guitar-2.txt
-DOCUMENTS/all_documents/guitar-5.txt
-
-DOCUMENTS/all_documents/guitar-2.txt
-DOCUMENTS/all_documents/guitar-6.txt
-
-DOCUMENTS/all_documents/guitar-2.txt
-DOCUMENTS/all_documents/guitar-7.txt
-
-DOCUMENTS/all_documents/guitar-2.txt
-DOCUMENTS/all_documents/guitar-8.txt
-
-DOCUMENTS/all_documents/guitar-2.txt
-DOCUMENTS/all_documents/guitar-9.txt
-
-DOCUMENTS/all_documents/guitar-3.txt
-DOCUMENTS/all_documents/guitar-4.txt
-
-DOCUMENTS/all_documents/guitar-3.txt
-DOCUMENTS/all_documents/guitar-5.txt
-
-DOCUMENTS/all_documents/guitar-3.txt
-DOCUMENTS/all_documents/guitar-6.txt
-
-DOCUMENTS/all_documents/guitar-3.txt
-DOCUMENTS/all_documents/guitar-7.txt
-
-DOCUMENTS/all_documents/guitar-3.txt
-DOCUMENTS/all_documents/guitar-8.txt
-
-DOCUMENTS/all_documents/guitar-3.txt
-DOCUMENTS/all_documents/guitar-9.txt
-
-DOCUMENTS/all_documents/guitar-4.txt
-DOCUMENTS/all_documents/guitar-5.txt
-
-DOCUMENTS/all_documents/guitar-4.txt
-DOCUMENTS/all_documents/guitar-6.txt
-
-DOCUMENTS/all_documents/guitar-4.txt
-DOCUMENTS/all_documents/guitar-7.txt
-
-DOCUMENTS/all_documents/guitar-4.txt
-DOCUMENTS/all_documents/guitar-8.txt
-
-DOCUMENTS/all_documents/guitar-4.txt
-DOCUMENTS/all_documents/guitar-9.txt
-
-DOCUMENTS/all_documents/guitar-5.txt
-DOCUMENTS/all_documents/guitar-6.txt
-
-DOCUMENTS/all_documents/guitar-6.txt
-DOCUMENTS/all_documents/guitar-7.txt
-
-DOCUMENTS/all_documents/guitar-5.txt
-DOCUMENTS/all_documents/guitar-7.txt
-
-DOCUMENTS/all_documents/guitar-5.txt
-DOCUMENTS/all_documents/guitar-8.txt
-
-DOCUMENTS/all_documents/guitar-7.txt
-DOCUMENTS/all_documents/guitar-8.txt
-
-DOCUMENTS/all_documents/guitar-5.txt
-DOCUMENTS/all_documents/guitar-9.txt
-
-DOCUMENTS/all_documents/guitar-6.txt
-DOCUMENTS/all_documents/guitar-8.txt
-
-DOCUMENTS/all_documents/guitar-6.txt
-DOCUMENTS/all_documents/guitar-9.txt
-
-DOCUMENTS/all_documents/guitar-7.txt
-DOCUMENTS/all_documents/guitar-9.txt
-
-DOCUMENTS/all_documents/guitar-8.txt
-DOCUMENTS/all_documents/guitar-9.txt
+DOCUMENTS/wikipedia_documents/D-284.txt
+DOCUMENTS/wikipedia_documents/D-348.txt
 

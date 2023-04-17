@@ -29,8 +29,7 @@ def compare_files(file1, file2, k):
     similarity = len(common_k_grams) / len(union_k_grams)
     return similarity
 
-def compare_all_files(folder, k):
-    files = [os.path.join(folder, file) for file in os.listdir(folder)]
+def compare_all_files(files, k):
     similarities = collections.defaultdict(list)
     for file1, file2 in itertools.combinations(files, 2):
         similarity = compare_files(file1, file2, k)
@@ -49,7 +48,7 @@ def remove_newlines(folder_path):
 
 
 LSH_k = int(sys.argv[1])
-folder = f"../{sys.argv[2]}"
+# folder = f"../{sys.argv[2]}"
 file_add_on = sys.argv[3]
 
 if not file_add_on:
@@ -57,35 +56,37 @@ if not file_add_on:
 else:
     file_add_on = '_' + file_add_on + '_'
 
-print('Benchmarking from folder: ' + folder)
+# print('Benchmarking from folder: ' + folder)
 # print('K:                        ' + str(k))
-print('File add on:              ' + file_add_on)
+# print('File add on:              ' + file_add_on)
 
 threshold = 0.1
-
 
 prefix = "../outputs/benchmark_pairs" + file_add_on
 print("Benchmarking files:       " + str(prefix))
 
+folders = [
+    '../DOCUMENTS/chatGPT',
+    '../DOCUMENTS/paraphrased_output_docs',
+    '../DOCUMENTS/wikipedia_documents',
+]
 
-start_k = 6
-end_k = 6
+filename = prefix + str(LSH_k) + ".txt"
+with open(filename, 'w') as f:
+    all_files = []
 
-for k in range(start_k, end_k + 1):
-    similarities = compare_all_files(folder, k)
+    for folder in folders:
+        folder_files = [os.path.join(folder, file) for file in os.listdir(folder)]
+        all_files += folder_files
+    print(len(all_files))
+    similarities = compare_all_files(all_files, LSH_k)
     max_similarity = max(similarities.keys())
 
-    print('K:              ' + str(k))
-    # print('MAX SIMILARITY: ' + str(max_similarity) + '\n')
-
-    filename = prefix + str(k) + ".txt"
-    with open(filename, 'w') as f:
-        for similarity, files in similarities.items():
-            if similarity > threshold:
-                # print(similarity)
-                for file1, file2 in files:
-                    f.write(file1[3:])
-                    f.write('\n')
-                    f.write(file2[3:])
-                    f.write('\n\n')
+    for similarity, files in similarities.items():
+        if similarity > threshold:
+            for file1, file2 in files:
+                f.write(file1[3:])
+                f.write('\n')
+                f.write(file2[3:])
+                f.write('\n\n')
 
