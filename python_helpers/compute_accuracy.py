@@ -35,7 +35,8 @@ def compute_overlap_percent(set1, set2, set1_name):
 lsh_pair_file = f"../{sys.argv[1]}"
 benchmarking_folder = '../outputs/'
 benchmarking_file_addon = sys.argv[2]
-num_possible_combos = int(sys.argv[3])
+lsh_K = int(sys.argv[3])
+num_possible_combos = int(sys.argv[4])
 print('Num possible pairs: ' + str(num_possible_combos))
 
 if len(benchmarking_file_addon) > 0:
@@ -58,8 +59,6 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
             lsh_pairs = read_pairs_file(lsh_pair_file)
             benchmarking_pairs = read_pairs_file(file_path)
 
-            jaccard = filename[-7:-4]
-
             precision = compute_overlap_percent(lsh_pairs, benchmarking_pairs, "lsh")
             recall = compute_overlap_percent(benchmarking_pairs, lsh_pairs, "benchmarking")
             
@@ -67,12 +66,15 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
             plagiarized_ratio_benchmarking = 100 * (len(benchmarking_pairs)/num_possible_combos)
             ratio = 100 * (plagiarized_ratio_lsh / plagiarized_ratio_benchmarking)
 
-            print("Jaccard:                " + str(jaccard))
+            K = filename[-5:-4]
+            print("K:                      " + str(K))
             # print("Num LSH pairs:          " + str(len(lsh_pairs)))
             print("Num benchmarking pairs: " + str(len(benchmarking_pairs)))
             # print(f"Precision:              {round(precision, 5)}%")
             print(f"Recall:                 {round(recall)}%")
             # print(f"Plagiarized % Bench:    {round(plagiarized_ratio_benchmarking, 3)}%")
             print(f"Plagiarized % LSH:      {round(plagiarized_ratio_lsh, 3)}%")
-            # print(f"Ratio:                  {round(ratio)}%")
+            print(f"Ratio:                  {round(ratio)}%")
             print('\n')
+
+print('LSH K: ' + str(lsh_K))

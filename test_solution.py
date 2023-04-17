@@ -4,6 +4,12 @@ import os
 
 from python_helpers.python_timer import Timer
 
+def clear_output_folder():
+    for filename in os.listdir('outputs'):
+        file_path = os.path.join('outputs', filename)
+        if os.path.isfile(file_path):
+            os.unlink(file_path)
+
 def make():
     subprocess.run('make')
 
@@ -42,6 +48,7 @@ def parse_cmd_line(args):
             response = input('Are you sure you want to compute benchmarking? It will take a couple of minutes... (yes or no)\n')
             if 'yes' in response:
                 configs['compute_benchmarking'] = True
+                clear_output_folder()
         elif arg.startswith("--o="):
             configs['hash_table_file'] = f"outputs/hash_table_{arg.split('=')[1]}.txt"
             configs['pair_file'] = f"outputs/pairs_{arg.split('=')[1]}.txt"
@@ -67,7 +74,7 @@ def run_benchmarking(configs):
 
 def compute_accuracy(configs):
     num_combos = get_possible_combinations(configs)
-    subprocess.run(["python3", "compute_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on'], str(num_combos)], cwd="python_helpers")
+    subprocess.run(["python3", "compute_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], str(num_combos)], cwd="python_helpers")
 
 
 # MAIN

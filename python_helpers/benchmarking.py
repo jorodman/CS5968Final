@@ -48,7 +48,7 @@ def remove_newlines(folder_path):
                 file.write(contents)
 
 
-k = int(sys.argv[1])
+# k = int(sys.argv[1])
 folder = f"../{sys.argv[2]}"
 file_add_on = sys.argv[3]
 
@@ -58,21 +58,27 @@ else:
     file_add_on = '_' + file_add_on + '_'
 
 print('Benchmarking from folder: ' + folder)
-print('K:                        ' + str(k))
+# print('K:                        ' + str(k))
 print('File add on:              ' + file_add_on)
 
-threshold = 0.05
-step = 0.01
+threshold = 0.1
 
-similarities = compare_all_files(folder, k)
 
 prefix = "../outputs/benchmark_pairs" + file_add_on
 print("Benchmarking files:       " + str(prefix))
 
-max_similarity = max(similarities.keys())
 
-while threshold <= max_similarity:
-    filename = prefix + str(round(threshold, 2)) + ".txt"
+start_k = 4
+end_k = 8
+
+for k in range(start_k, end_k + 1):
+    similarities = compare_all_files(folder, k)
+    max_similarity = max(similarities.keys())
+
+    print('K: ' + str(k))
+    print('MAX: ' + str(max_similarity) + '\n')
+
+    filename = prefix + str(k) + ".txt"
     with open(filename, 'w') as f:
         for similarity, files in similarities.items():
             if similarity > threshold:
@@ -81,7 +87,4 @@ while threshold <= max_similarity:
                     f.write('\n')
                     f.write(file2[3:])
                     f.write('\n\n')
-    
-    threshold += step
-    threshold = round(threshold, 3)
 
