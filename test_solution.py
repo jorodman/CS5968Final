@@ -60,7 +60,7 @@ def run_lsh(configs):
     subprocess.run(["./test", configs['k'], configs['num_hash_functions'], configs['partition_length'], configs['document_folder'], configs['hash_table_file']])
     subprocess.run(["python3", "file_conversion.py", configs['hash_table_file'], configs['pair_file']], cwd="python_helpers")
     my_timer.stop()
-    # my_timer.print_elapsed_time()
+    my_timer.print_elapsed_time()
 
 def run_benchmarking(configs):
     benchmarking_timer = Timer("Benchmarking")

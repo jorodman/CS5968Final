@@ -12,6 +12,4 @@ class Timer:
 
     def print_elapsed_time(self):
         elapsed_time = self.end_time - self.start_time
-        print(self.label)
-        print(round(elapsed_time, 5))
-        print('\n')
+        print(self.label + ': ' + round(elapsed_time, 5) + '\n')
