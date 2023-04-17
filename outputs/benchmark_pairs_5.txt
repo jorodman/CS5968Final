@@ -1,6 +1,0 @@
-DOCUMENTS/wikipedia_documents/D-33.txt
-DOCUMENTS/wikipedia_documents/D-34.txt
-
-DOCUMENTS/wikipedia_documents/D-56.txt
-DOCUMENTS/wikipedia_documents/D-78.txt
-

@@ -32,7 +32,8 @@ benchmarking_folder = '../outputs/'
 benchmarking_file_addon = sys.argv[2]
 lsh_K = int(sys.argv[3])
 lsh_H = int(sys.argv[4])
-num_possible_combos = int(sys.argv[5])
+lsh_P = int(sys.argv[5])
+num_possible_combos = int(sys.argv[6])
 
 if len(benchmarking_file_addon) > 0:
     benchmarking_file_prefix = 'benchmark_pairs' + '_' + benchmarking_file_addon + '_'
@@ -51,10 +52,10 @@ plagiarized_ratio_lsh = 100 * (len(lsh_pairs)/num_possible_combos)
 
 for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
 
-    # if plagiarized_ratio_lsh < 20:
+    if plagiarized_ratio_lsh < 10:
         for filename in filenames:
-            if benchmarking_file_prefix in filename and str(lsh_K) in filename:
-                print(filename)
+            # if benchmarking_file_prefix in filename and str(lsh_K) in filename:
+            if benchmarking_file_prefix in filename:
                 file_path = os.path.join(dirpath, filename)
 
                 benchmarking_pairs = read_pairs_file(file_path)
@@ -70,16 +71,17 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
 
                 # K = filename.split('_', 2)[-1].replace('.txt', '')
 
-                # if len(benchmarking_pairs) > 0 and recall > 80:
+                if recall > 96 and precision > 60:
                     # print("K:                      " + str(K))
-                    # print("LSH K:                  " + str(lsh_K))
-                    # print("H:                      " + str(lsh_H))
+                    print("LSH K:                  " + str(lsh_K))
+                    print("LSH P:                  " + str(lsh_P))
+                    print("H:                      " + str(lsh_H))
                     print("Num benchmarking pairs: " + str(len(benchmarking_pairs)))
                     print("Num LSH pairs:          " + str(len(lsh_pairs)))
                     print("Num possible pairs:     " + str(num_possible_combos))
-                    # print(f"Plagiarized % LSH:      {round(plagiarized_ratio_lsh, 3)}%")
+                    print(f"Plagiarized % LSH:      {round(plagiarized_ratio_lsh, 3)}%")
                     print(f"Recall:                 {round(recall)}%")
-                    # print(f"Precision:              {round(precision, 5)}%")
-                    # print(f"Plagiarized % Bench:    {round(plagiarized_ratio_benchmarking, 3)}%")
+                    print(f"Precision:              {round(precision, 5)}%")
+                    print(f"Plagiarized % Bench:    {round(plagiarized_ratio_benchmarking, 3)}%")
                     print('\n')
 

@@ -7,7 +7,7 @@ documents_folder = 'DOCUMENTS'
 # Setup params
 input_folder = f"{documents_folder}/paraphrased_input_docs"
 output_folder = f"{documents_folder}/paraphrased_output_docs"
-percent_of_words_to_replace = 0.1
+percent_of_words_to_replace = 0.7
 num_output_files_per_input = 10
 
 

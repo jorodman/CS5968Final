@@ -68,20 +68,21 @@ prefix = "../outputs/benchmark_pairs" + file_add_on
 print("Benchmarking files:       " + str(prefix))
 
 
-start_k = 5
-end_k = 5
+start_k = 6
+end_k = 6
 
 for k in range(start_k, end_k + 1):
     similarities = compare_all_files(folder, k)
     max_similarity = max(similarities.keys())
 
     print('K:              ' + str(k))
-    print('MAX SIMILARITY: ' + str(max_similarity) + '\n')
+    # print('MAX SIMILARITY: ' + str(max_similarity) + '\n')
 
     filename = prefix + str(k) + ".txt"
     with open(filename, 'w') as f:
         for similarity, files in similarities.items():
             if similarity > threshold:
+                # print(similarity)
                 for file1, file2 in files:
                     f.write(file1[3:])
                     f.write('\n')
