@@ -1,0 +1,6 @@
+all_documents/doc_297.txt
+all_documents/doc_577.txt
+
+all_documents/doc_377.txt
+all_documents/doc_525.txt
+

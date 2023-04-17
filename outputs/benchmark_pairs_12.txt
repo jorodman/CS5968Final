@@ -1,0 +1,6 @@
+all_documents/doc_328.txt
+all_documents/doc_852.txt
+
+all_documents/doc_577.txt
+all_documents/doc_861.txt
+

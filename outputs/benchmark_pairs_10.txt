@@ -1,0 +1,3 @@
+all_documents/doc_377.txt
+all_documents/doc_525.txt
+
