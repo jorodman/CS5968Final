@@ -74,7 +74,7 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
             print(f"Recall:                 {round(recall)}%")
             # print(f"Plagiarized % Bench:    {round(plagiarized_ratio_benchmarking, 3)}%")
             print(f"Plagiarized % LSH:      {round(plagiarized_ratio_lsh, 3)}%")
-            print(f"Ratio:                  {round(ratio)}%")
+            # print(f"Ratio:                  {round(ratio)}%")
             print('\n')
 
 print('LSH K: ' + str(lsh_K))

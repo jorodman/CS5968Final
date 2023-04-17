@@ -68,8 +68,8 @@ prefix = "../outputs/benchmark_pairs" + file_add_on
 print("Benchmarking files:       " + str(prefix))
 
 
-start_k = 4
-end_k = 8
+start_k = 8
+end_k = 20
 
 for k in range(start_k, end_k + 1):
     similarities = compare_all_files(folder, k)
