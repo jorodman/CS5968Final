@@ -6,7 +6,8 @@ import random
 import re
 import os
 
-num_docs_to_get = 100
+start_document_number = 100
+num_docs_to_get = 400
 min_words = 1000
 min_words_before_strip = 1500
 max_words = 2500
@@ -42,7 +43,7 @@ def download_random_document():
             if word_count > min_words:
                 return document
 
-document_number = 0
+document_number = start_document_number
 while document_number < num_docs_to_get:
     text = download_random_document()
     if text is not None:

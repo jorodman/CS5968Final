@@ -86,8 +86,9 @@ if configs['compute_benchmarking']:
 
 test_params = True
 if test_params:
-    for k in range(50, 60):
-        # for h in range(20, 100, 10):
+    for k in range(50, 100):
+        print('K: ' + str(k))
+        for h in range(20, 100, 10):
             for p in range(1, 10):
                 configs['partition_length'] = str(p)
                 configs['k'] = str(k)
