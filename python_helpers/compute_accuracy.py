@@ -67,14 +67,12 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
             plagiarized_ratio_benchmarking = 100 * (len(benchmarking_pairs)/num_possible_combos)
             ratio = 100 * (plagiarized_ratio_lsh / plagiarized_ratio_benchmarking)
 
-            if len(benchmarking_pairs) < 10:
-                print("Jaccard:                " + str(jaccard))
-
-                # print("Num LSH pairs:          " + str(len(lsh_pairs)))
-                print("Num benchmarking pairs: " + str(len(benchmarking_pairs)))
-                # print(f"Precision:              {round(precision)}%")
-                print(f"Recall:                 {round(recall)}%")
-                # print(f"Plagiarized % Bench:    {round(plagiarized_ratio_benchmarking, 3)}%")
-                print(f"Plagiarized % LSH:      {round(plagiarized_ratio_lsh, 3)}%")
-                # print(f"Ratio:                  {round(ratio)}%")
-                print('\n')
+            print("Jaccard:                " + str(jaccard))
+            # print("Num LSH pairs:          " + str(len(lsh_pairs)))
+            print("Num benchmarking pairs: " + str(len(benchmarking_pairs)))
+            # print(f"Precision:              {round(precision, 5)}%")
+            print(f"Recall:                 {round(recall)}%")
+            # print(f"Plagiarized % Bench:    {round(plagiarized_ratio_benchmarking, 3)}%")
+            print(f"Plagiarized % LSH:      {round(plagiarized_ratio_lsh, 3)}%")
+            # print(f"Ratio:                  {round(ratio)}%")
+            print('\n')

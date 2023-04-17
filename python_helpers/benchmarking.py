@@ -63,24 +63,20 @@ print('File add on:              ' + file_add_on)
 
 threshold = 0.05
 step = 0.01
-max_threshold = 0.15
 
 similarities = compare_all_files(folder, k)
 
 prefix = "../outputs/benchmark_pairs" + file_add_on
 print("Benchmarking files:       " + str(prefix))
 
-while threshold <= max_threshold:
+max_similarity = max(similarities.keys())
+
+while threshold <= max_similarity:
     filename = prefix + str(round(threshold, 2)) + ".txt"
-    # print(filename)
     with open(filename, 'w') as f:
         for similarity, files in similarities.items():
-            # print(similarity)
-            # print(threshold)
             if similarity > threshold:
                 for file1, file2 in files:
-                    # print(file1)
-                    # print(file2)
                     f.write(file1[3:])
                     f.write('\n')
                     f.write(file2[3:])

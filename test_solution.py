@@ -39,8 +39,8 @@ def parse_cmd_line(args):
         elif arg.startswith("--d="):
             configs['document_folder'] = arg.split("=")[1]
         elif arg.startswith("--b"):
-            # response = input('Are you sure you want to compute benchmarking? It will take a couple of minutes... (yes or no)\n')
-            # if 'yes' in response:
+            response = input('Are you sure you want to compute benchmarking? It will take a couple of minutes... (yes or no)\n')
+            if 'yes' in response:
                 configs['compute_benchmarking'] = True
         elif arg.startswith("--o="):
             configs['hash_table_file'] = f"outputs/hash_table_{arg.split('=')[1]}.txt"
