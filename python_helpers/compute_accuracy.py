@@ -11,15 +11,10 @@ def read_pairs_file(filename):
                 pairs.add(pair)
     return pairs
 
-def compute_overlap_percent(set1, set2, set1_name):
+def compute_overlap_percent(set1, set2):
     set1_frozen = {frozenset(pair) for pair in set1}
     set2_frozen = {frozenset(pair) for pair in set2}
     intersection = {tuple(pair) for pair in (set1_frozen & set2_frozen)}
-    # print('\n')
-    # print(set1)
-    # print(set2)
-    # print("intersection: " + str(intersection))
-
 
     if len(set1) == 0 and len(set2) == 0:
         overlap_percent = 100
@@ -36,8 +31,8 @@ lsh_pair_file = f"../{sys.argv[1]}"
 benchmarking_folder = '../outputs/'
 benchmarking_file_addon = sys.argv[2]
 lsh_K = int(sys.argv[3])
-num_possible_combos = int(sys.argv[4])
-print('Num possible pairs: ' + str(num_possible_combos))
+lsh_H = int(sys.argv[4])
+num_possible_combos = int(sys.argv[5])
 
 if len(benchmarking_file_addon) > 0:
     benchmarking_file_prefix = 'benchmark_pairs' + '_' + benchmarking_file_addon + '_'
@@ -51,30 +46,40 @@ else:
 # print("Precision: Percentage of detected documents that are actually plagiarized")
 # print("Recall: Percentage of actually plagiarized docs that we detected")
 
+lsh_pairs = read_pairs_file(lsh_pair_file)
+plagiarized_ratio_lsh = 100 * (len(lsh_pairs)/num_possible_combos)
+
 for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
-    for filename in filenames:
-        if benchmarking_file_prefix in filename:
-            file_path = os.path.join(dirpath, filename)
 
-            lsh_pairs = read_pairs_file(lsh_pair_file)
-            benchmarking_pairs = read_pairs_file(file_path)
+    # if plagiarized_ratio_lsh < 20:
+        for filename in filenames:
+            if benchmarking_file_prefix in filename and str(lsh_K) in filename:
+                print(filename)
+                file_path = os.path.join(dirpath, filename)
 
-            precision = compute_overlap_percent(lsh_pairs, benchmarking_pairs, "lsh")
-            recall = compute_overlap_percent(benchmarking_pairs, lsh_pairs, "benchmarking")
-            
-            plagiarized_ratio_lsh = 100 * (len(lsh_pairs)/num_possible_combos)
-            plagiarized_ratio_benchmarking = 100 * (len(benchmarking_pairs)/num_possible_combos)
-            ratio = 100 * (plagiarized_ratio_lsh / plagiarized_ratio_benchmarking)
+                benchmarking_pairs = read_pairs_file(file_path)
 
-            K = filename[-5:-4]
-            print("K:                      " + str(K))
-            # print("Num LSH pairs:          " + str(len(lsh_pairs)))
-            print("Num benchmarking pairs: " + str(len(benchmarking_pairs)))
-            # print(f"Precision:              {round(precision, 5)}%")
-            print(f"Recall:                 {round(recall)}%")
-            # print(f"Plagiarized % Bench:    {round(plagiarized_ratio_benchmarking, 3)}%")
-            print(f"Plagiarized % LSH:      {round(plagiarized_ratio_lsh, 3)}%")
-            # print(f"Ratio:                  {round(ratio)}%")
-            print('\n')
+                precision = compute_overlap_percent(lsh_pairs, benchmarking_pairs)
+                recall = compute_overlap_percent(benchmarking_pairs, lsh_pairs)
+                
+                plagiarized_ratio_benchmarking = 100 * (len(benchmarking_pairs)/num_possible_combos)
 
-print('LSH K: ' + str(lsh_K))
+                ratio = 0
+                if plagiarized_ratio_benchmarking > 0:
+                    ratio = 100 * (plagiarized_ratio_lsh / plagiarized_ratio_benchmarking)
+
+                # K = filename.split('_', 2)[-1].replace('.txt', '')
+
+                # if len(benchmarking_pairs) > 0 and recall > 80:
+                    # print("K:                      " + str(K))
+                    # print("LSH K:                  " + str(lsh_K))
+                    # print("H:                      " + str(lsh_H))
+                    print("Num benchmarking pairs: " + str(len(benchmarking_pairs)))
+                    print("Num LSH pairs:          " + str(len(lsh_pairs)))
+                    print("Num possible pairs:     " + str(num_possible_combos))
+                    # print(f"Plagiarized % LSH:      {round(plagiarized_ratio_lsh, 3)}%")
+                    print(f"Recall:                 {round(recall)}%")
+                    # print(f"Precision:              {round(precision, 5)}%")
+                    # print(f"Plagiarized % Bench:    {round(plagiarized_ratio_benchmarking, 3)}%")
+                    print('\n')
+

@@ -10,9 +10,6 @@ def clear_output_folder():
         if os.path.isfile(file_path):
             os.unlink(file_path)
 
-def make():
-    subprocess.run('make')
-
 def count_files(path):
     file_list = os.listdir(path)
     file_list = [f for f in file_list if os.path.isfile(os.path.join(path, f))]
@@ -26,10 +23,10 @@ def parse_cmd_line(args):
 
     configs = {
         'compute_benchmarking': False,
-        'k': '10',
+        'k': '5',
         'num_hash_functions': '10',
         'partition_length': '1',
-        'document_folder': 'documents',
+        'document_folder': 'DOCUMENTS/fewer_documents',
         'hash_table_file': 'outputs/hash_table.txt',
         'pair_file': 'outputs/pairs.txt',
         'benchmarking_file_add_on': '',
@@ -74,18 +71,31 @@ def run_benchmarking(configs):
 
 def compute_accuracy(configs):
     num_combos = get_possible_combinations(configs)
-    subprocess.run(["python3", "compute_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], str(num_combos)], cwd="python_helpers")
+    subprocess.run(["python3", "compute_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], configs['num_hash_functions'], str(num_combos)], cwd="python_helpers")
 
 
 # MAIN
 configs = parse_cmd_line(sys.argv)
 
-run_lsh(configs)
-
 if configs['compute_benchmarking']:
     run_benchmarking(configs)
 
+run_lsh(configs)
 compute_accuracy(configs)
+
+
+test_params = False
+if test_params:
+    for k in range(4, 9):
+        # print("K: " + str(k))
+        for h in range(5, 51, 5):
+            for p in range(1, 5):
+                configs['k'] = str(k)
+                configs['num_hash_functions'] = str(h)
+                configs['partition_length'] = str(p)
+                print('P: ' + str(p))
+                run_lsh(configs)
+                compute_accuracy(configs)
 
 
 

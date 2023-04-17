@@ -48,7 +48,7 @@ def remove_newlines(folder_path):
                 file.write(contents)
 
 
-# k = int(sys.argv[1])
+LSH_k = int(sys.argv[1])
 folder = f"../{sys.argv[2]}"
 file_add_on = sys.argv[3]
 
@@ -68,15 +68,15 @@ prefix = "../outputs/benchmark_pairs" + file_add_on
 print("Benchmarking files:       " + str(prefix))
 
 
-start_k = 8
-end_k = 20
+start_k = 5
+end_k = 5
 
 for k in range(start_k, end_k + 1):
     similarities = compare_all_files(folder, k)
     max_similarity = max(similarities.keys())
 
-    print('K: ' + str(k))
-    print('MAX: ' + str(max_similarity) + '\n')
+    print('K:              ' + str(k))
+    print('MAX SIMILARITY: ' + str(max_similarity) + '\n')
 
     filename = prefix + str(k) + ".txt"
     with open(filename, 'w') as f:

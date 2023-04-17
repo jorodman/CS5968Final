@@ -68,14 +68,14 @@ int main(int argc, char *argv[]){
         output_file = argv[5];
     }
 
-    cout << endl;
-    cout << "Running plagiarism detection with the following params:" << endl;
-    cout << "K gram length:      " << chars_per_k_gram << endl;
-    cout << "Num Hash Functions: " << num_hash_functions << endl;
-    cout << "Partition Length:   " << partition_length << endl;
-    cout << "Folder with docs:   " << document_folder << endl;
-    cout << "Outputing file:     " << output_file << endl;
-    cout << endl;
+    // cout << endl;
+    // cout << "Running plagiarism detection with the following params:" << endl;
+    // cout << "K gram length:      " << chars_per_k_gram << endl;
+    // cout << "Num Hash Functions: " << num_hash_functions << endl;
+    // cout << "Partition Length:   " << partition_length << endl;
+    // cout << "Folder with docs:   " << document_folder << endl;
+    // cout << "Outputing file:     " << output_file << endl;
+    // cout << endl;
 
     vector<string> file_names = get_files_in_dir(document_folder);
 
