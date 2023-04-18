@@ -71,11 +71,13 @@ def run_benchmarking(configs):
     benchmarking_timer.print_elapsed_time()
 
 def compute_accuracy(configs):
-    # num_combos = get_possible_combinations(configs)
     subprocess.run(["python3", "compute_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], configs['num_hash_functions'], configs['partition_length'], str(-1)], cwd="python_helpers")
 
 def compute_and_print_accuracy(configs):
     subprocess.run(["python3", "print_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], configs['num_hash_functions'], configs['partition_length'], str(-1)], cwd="python_helpers")
+
+def compute_and_print_efficiency(configs):
+    subprocess.run(["python3", "print_efficiency.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], configs['num_hash_functions'], configs['partition_length'], str(-1)], cwd="python_helpers")
 
 def find_good_params(configs):
     for k in range(50, 100):
@@ -97,12 +99,13 @@ def print_accuracy(configs):
             compute_and_print_accuracy(configs)
 
 def print_efficiency(configs):
-    for k in range(5, 20):
-        for h in range(10, 20, 1):
-            configs['k'] = str(k)
-            configs['num_hash_functions'] = str(h)
-            # run_lsh(configs)
-            # compute_accuracy(configs)
+    k = 6
+    h = 10
+
+    for N in range(500):
+        configs['k'] = str(k)
+        configs['num_hash_functions'] = str(h)
+        run_lsh(configs)
 
 # MAIN
 configs = parse_cmd_line(sys.argv)

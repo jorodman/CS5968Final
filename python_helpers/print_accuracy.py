@@ -40,12 +40,6 @@ if len(benchmarking_file_addon) > 0:
 else:
     benchmarking_file_prefix = 'benchmark_pairs'
 
-# print('LSH:                       ' + lsh_pair_file)
-# print("Benchmarking files prefix: " + benchmarking_file_prefix)
-# print('\n')
-
-# print("Precision: Percentage of detected documents that are actually plagiarized")
-# print("Recall: Percentage of actually plagiarized docs that we detected")
 
 lsh_pairs = read_pairs_file(lsh_pair_file)
 plagiarized_ratio_lsh = 100 * (len(lsh_pairs)/num_possible_combos)
