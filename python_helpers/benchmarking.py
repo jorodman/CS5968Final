@@ -48,7 +48,7 @@ def remove_newlines(folder_path):
 
 
 LSH_k = int(sys.argv[1])
-# folder = f"../{sys.argv[2]}"
+folder = f"../{sys.argv[2]}"
 file_add_on = sys.argv[3]
 
 if not file_add_on:
@@ -69,7 +69,8 @@ folders = [
     # '../DOCUMENTS/chatGPT',
     # '../DOCUMENTS/paraphrased_output_docs',
     # '../DOCUMENTS/wikipedia_documents',
-    '../DOCUMENTS/all_docs'
+    # '../DOCUMENTS/all_docs'
+    folder
 ]
 
 filename = prefix + str(LSH_k) + ".txt"

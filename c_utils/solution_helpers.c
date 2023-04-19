@@ -62,10 +62,20 @@ vector<string> get_files_in_dir(string directory_path)
 }
 
 string read_file_contents(string file_path) {
+
+    string out_path = "outputs/file_lengths.txt";
+
     try {
+
+        // ofstream outfile(out_path, ios::app);
         ifstream file(file_path);
         stringstream buffer;
         buffer << file.rdbuf();
+        string contents = buffer.str();
+
+        // outfile << file_path << ": " << contents.length() << endl;
+        // outfile.close();
+
         return buffer.str();
     }
     catch (const exception& e) {

@@ -11,6 +11,7 @@ def read_pairs_file(filename):
                 pairs.add(pair)
     return pairs
 
+
 def compute_overlap_percent(set1, set2):
     set1_frozen = {frozenset(pair) for pair in set1}
     set2_frozen = {frozenset(pair) for pair in set2}
@@ -27,6 +28,16 @@ def compute_overlap_percent(set1, set2):
 
     return overlap_percent
 
+def print_diff_pairs(set1, set2):
+    set1_frozen = {frozenset(pair) for pair in set1}
+    set2_frozen = {frozenset(pair) for pair in set2}
+
+    diff = set1_frozen - set2_frozen 
+    print(len(diff))
+
+    for f1, f2 in diff:
+        print(f1 + " " + f2)
+
 lsh_pair_file = f"../{sys.argv[1]}"
 benchmarking_folder = '../outputs/'
 benchmarking_file_addon = sys.argv[2]
@@ -40,19 +51,15 @@ if len(benchmarking_file_addon) > 0:
 else:
     benchmarking_file_prefix = 'benchmark_pairs'
 
-# print('LSH:                       ' + lsh_pair_file)
-# print("Benchmarking files prefix: " + benchmarking_file_prefix)
-# print('\n')
-
-# print("Precision: Percentage of detected documents that are actually plagiarized")
-# print("Recall: Percentage of actually plagiarized docs that we detected")
+max_recall = 80 
+max_precision = 5
 
 lsh_pairs = read_pairs_file(lsh_pair_file)
-plagiarized_ratio_lsh = 100 * (len(lsh_pairs)/num_possible_combos)
+# plagiarized_ratio_lsh = 100 * (len(lsh_pairs)/num_possible_combos)
 
 for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
 
-    if plagiarized_ratio_lsh < 10:
+    # if plagiarized_ratio_lsh < 10:
         for filename in filenames:
             # if benchmarking_file_prefix in filename and str(lsh_K) in filename:
             if benchmarking_file_prefix in filename:
@@ -62,26 +69,23 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
 
                 precision = compute_overlap_percent(lsh_pairs, benchmarking_pairs)
                 recall = compute_overlap_percent(benchmarking_pairs, lsh_pairs)
+
                 
-                plagiarized_ratio_benchmarking = 100 * (len(benchmarking_pairs)/num_possible_combos)
+                # plagiarized_ratio_benchmarking = 100 * (len(benchmarking_pairs)/num_possible_combos)
 
-                ratio = 0
-                if plagiarized_ratio_benchmarking > 0:
-                    ratio = 100 * (plagiarized_ratio_lsh / plagiarized_ratio_benchmarking)
+                # ratio = 0
+                # if plagiarized_ratio_benchmarking > 0:
+                #     ratio = 100 * (plagiarized_ratio_lsh / plagiarized_ratio_benchmarking)
 
-                # K = filename.split('_', 2)[-1].replace('.txt', '')
+                print_all = False
 
-                if recall > 96 and precision > 60:
-                    # print("K:                      " + str(K))
-                    print("LSH K:                  " + str(lsh_K))
-                    print("LSH P:                  " + str(lsh_P))
-                    print("H:                      " + str(lsh_H))
-                    print("Num benchmarking pairs: " + str(len(benchmarking_pairs)))
-                    print("Num LSH pairs:          " + str(len(lsh_pairs)))
-                    print("Num possible pairs:     " + str(num_possible_combos))
-                    print(f"Plagiarized % LSH:      {round(plagiarized_ratio_lsh, 3)}%")
-                    print(f"Recall:                 {round(recall)}%")
-                    print(f"Precision:              {round(precision, 5)}%")
-                    print(f"Plagiarized % Bench:    {round(plagiarized_ratio_benchmarking, 3)}%")
+                if print_all or (recall > 80 and precision > 20):
+                    print("K:                       " + str(lsh_K))
+                    print("P:                       " + str(lsh_P))
+                    print("H:                       " + str(lsh_H))
+                    print("Num benchmarking pairs:  " + str(len(benchmarking_pairs)))
+                    print("Num LSH pairs:           " + str(len(lsh_pairs)))
+                    print(f"Recall:                  {round(recall, 3)}%")
+                    print(f"Precision:               {round(precision, 3)}%")
                     print('\n')
 

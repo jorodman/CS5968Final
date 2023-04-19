@@ -24,14 +24,15 @@ def parse_cmd_line(args):
 
     configs = {
         'compute_benchmarking': False,
-        'k': '6',
+        'k': '5',
         'num_hash_functions': '10',
         'partition_length': '1',
         'document_folder': 'DOCUMENTS/all_docs',
         'hash_table_file': 'outputs/hash_table.txt',
         'pair_file': 'outputs/pairs.txt',
         'benchmarking_file_add_on': '',
-        'test_params': False
+        'test_params': True,
+        'print_lsh': False,
     }
 
     for arg in args[1:]:
@@ -62,7 +63,7 @@ def run_lsh(configs):
     subprocess.run(["./test", configs['k'], configs['num_hash_functions'], configs['partition_length'], configs['document_folder'], configs['hash_table_file']])
     subprocess.run(["python3", "file_conversion.py", configs['hash_table_file'], configs['pair_file']], cwd="python_helpers")
     my_timer.stop()
-    my_timer.print_elapsed_time()
+    # my_timer.print_elapsed_time()
 
 def run_benchmarking(configs):
     benchmarking_timer = Timer("Benchmarking")
@@ -82,10 +83,23 @@ def compute_and_print_efficiency(configs):
     subprocess.run(["python3", "print_efficiency.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], configs['num_hash_functions'], configs['partition_length'], str(-1)], cwd="python_helpers")
 
 def find_good_params(configs):
-    for k in range(50, 100):
+
+    start_k = 20 
+    k_step = 1
+    end_k = 100 
+
+    start_h = 20
+    h_step = 1
+    end_h = 21
+    
+    start_p = 1
+    p_step = 1
+    end_p = 4
+
+    for k in range(start_k, end_k, k_step):
         print('K: ' + str(k))
-        for h in range(20, 100, 10):
-            for p in range(1, 10):
+        for h in range(start_h, end_h, h_step):
+            for p in range(start_p, end_p, p_step):
                 configs['partition_length'] = str(p)
                 configs['k'] = str(k)
                 configs['num_hash_functions'] = str(h)
@@ -127,7 +141,8 @@ if configs['test_params']:
     find_good_params(configs)
 
 # ACCURACY STUFF
-print_accuracy(configs)
+# print_accuracy(configs)
+# run_lsh(configs)
 
 #EFFICIENCY
 # print_efficiency(configs)

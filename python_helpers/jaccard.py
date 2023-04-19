@@ -26,29 +26,21 @@ def compare_files(file1, file2, k):
     similarity = len(common_k_grams) / len(union_k_grams)
     return similarity
 
-def compare_all_files(folder, k, file_filter):
+def compare_all_files(folder, k, file_filter, max_files_to_test):
     files = [os.path.join(folder, file) for file in os.listdir(folder)]
     files = [x for x in files if file_filter in x]
+    files = files[0:max_files_to_test]
     similarities = collections.defaultdict(list)
     for file1, file2 in itertools.combinations(files, 2):
         similarity = compare_files(file1, file2, k)
         similarities[similarity].append((file1, file2))
     return similarities
 
-def remove_newlines(folder_path):
-    for filename in os.listdir(folder_path):
-        filepath = os.path.join(folder_path, filename)
-        if os.path.isfile(filepath):
-            with open(filepath, 'r') as file:
-                contents = file.read()
-            with open(filepath, 'w') as file:
-                contents = contents.replace('\n', '')
-                file.write(contents)
 
-
-K = 6
+K = 5
 folder = "DOCUMENTS/chatGPT"
-threshold = 0.7
+threshold = 0.1
+max_files_to_test = 400
 file_filter = 'txt'
 
 if len(sys.argv) == 2:
@@ -64,10 +56,16 @@ elif len(sys.argv) == 5:
     K = int(sys.argv[1])
     threshold = float(sys.argv[2])
     folder = f"{sys.argv[3]}"
-    file_filter = f"{sys.argv[4]}"
+    max_files_to_test = int(sys.argv[4])
+elif len(sys.argv) == 6:
+    K = int(sys.argv[1])
+    threshold = float(sys.argv[2])
+    folder = f"{sys.argv[3]}"
+    max_files_to_test = int(sys.argv[4])
+    file_filter = f"{sys.argv[5]}"
 
 
-similarities = compare_all_files(folder, K, file_filter)
+similarities = compare_all_files(folder, K, file_filter, max_files_to_test)
 max_similarity = max(similarities.keys())
 min_similarity = min(similarities.keys())
 
@@ -86,8 +84,8 @@ for similarity, files in similarities.items():
         greater += 1
 
 num_elements = len(similarities.keys())
-percent_less = round(less / num_elements, 2)
-percent_greater = round(greater / num_elements, 2)
+percent_less = round(less / num_elements, 5)
+percent_greater = round(greater / num_elements, 5)
 
 print('Less:        ' + str(percent_less))
 print('Greater:     ' + str(percent_greater))

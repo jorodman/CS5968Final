@@ -1,6 +1,7 @@
 import random
 import string
 import os
+import sys
 
 documents_folder = 'DOCUMENTS'
 
@@ -9,6 +10,12 @@ input_folder = f"{documents_folder}/paraphrased_input_docs"
 output_folder = f"{documents_folder}/paraphrased_output_docs"
 percent_of_words_to_replace = 0.7
 num_output_files_per_input = 10
+
+if len(sys.argv) == 2:
+    percent_of_words_to_replace = float(sys.argv[1])
+elif len(sys.argv) == 3:
+    percent_of_words_to_replace = float(sys.argv[1])
+    num_output_files_per_input = int(sys.argv[2])
 
 
 def generate_new_word(word):
