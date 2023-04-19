@@ -66,9 +66,10 @@ prefix = "../outputs/benchmark_pairs" + file_add_on
 print("Benchmarking files:       " + str(prefix))
 
 folders = [
-    '../DOCUMENTS/chatGPT',
-    '../DOCUMENTS/paraphrased_output_docs',
-    '../DOCUMENTS/wikipedia_documents',
+    # '../DOCUMENTS/chatGPT',
+    # '../DOCUMENTS/paraphrased_output_docs',
+    # '../DOCUMENTS/wikipedia_documents',
+    '../DOCUMENTS/all_docs'
 ]
 
 filename = prefix + str(LSH_k) + ".txt"

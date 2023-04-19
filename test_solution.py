@@ -1,6 +1,7 @@
 import subprocess
 import sys
 import os
+import csv
 
 from python_helpers.python_timer import Timer
 
@@ -26,7 +27,7 @@ def parse_cmd_line(args):
         'k': '6',
         'num_hash_functions': '10',
         'partition_length': '1',
-        'document_folder': 'DOCUMENTS/chatGPT',
+        'document_folder': 'DOCUMENTS/all_docs',
         'hash_table_file': 'outputs/hash_table.txt',
         'pair_file': 'outputs/pairs.txt',
         'benchmarking_file_add_on': '',
@@ -74,8 +75,9 @@ def compute_accuracy(configs):
     subprocess.run(["python3", "compute_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], configs['num_hash_functions'], configs['partition_length'], str(-1)], cwd="python_helpers")
 
 def compute_and_print_accuracy(configs):
-    subprocess.run(["python3", "print_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], configs['num_hash_functions'], configs['partition_length'], str(-1)], cwd="python_helpers")
-
+    result = subprocess.run(["python3", "print_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], configs['num_hash_functions'], configs['partition_length'], str(-1)], cwd="python_helpers", capture_output=True, text=True)
+    output_list = result.stdout.strip().split('\n')
+    return output_list
 def compute_and_print_efficiency(configs):
     subprocess.run(["python3", "print_efficiency.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], configs['num_hash_functions'], configs['partition_length'], str(-1)], cwd="python_helpers")
 
@@ -91,12 +93,20 @@ def find_good_params(configs):
                 compute_accuracy(configs)
 
 def print_accuracy(configs):
-    for k in range(5, 20):
-        for h in range(10, 20, 1):
-            configs['k'] = str(k)
-            configs['num_hash_functions'] = str(h)
-            run_lsh(configs)
-            compute_and_print_accuracy(configs)
+    with open('accuracy_results.csv', 'w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(['K', 'H', 'Recall', 'Precision'])
+        for h in range(15, 25, 1):
+        # for k in range(100, 150):
+            # for h in range(15, 25, 1):
+            for k in range(125, 175):
+                configs['partition_length'] = str(1)
+                configs['k'] = str(k)
+                configs['num_hash_functions'] = str(h)
+                run_lsh(configs)
+                output_list = compute_and_print_accuracy(configs)
+                writer.writerow(output_list)
+
 
 def print_efficiency(configs):
     k = 6
@@ -120,7 +130,7 @@ if configs['test_params']:
 print_accuracy(configs)
 
 #EFFICIENCY
-print_efficiency(configs)
+# print_efficiency(configs)
 
 
 
