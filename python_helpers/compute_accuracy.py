@@ -38,18 +38,13 @@ def print_diff_pairs(set1, set2):
     for f1, f2 in diff:
         print(f1 + " " + f2)
 
-lsh_pair_file = f"../{sys.argv[1]}"
-benchmarking_folder = '../outputs/'
-benchmarking_file_addon = sys.argv[2]
-lsh_K = int(sys.argv[3])
-lsh_H = int(sys.argv[4])
-lsh_P = int(sys.argv[5])
-num_possible_combos = int(sys.argv[6])
+lsh_K = int(sys.argv[1])
+lsh_H = int(sys.argv[2])
+lsh_P = int(sys.argv[3])
 
-if len(benchmarking_file_addon) > 0:
-    benchmarking_file_prefix = 'benchmark_pairs' + '_' + benchmarking_file_addon + '_'
-else:
-    benchmarking_file_prefix = 'benchmark_pairs'
+benchmarking_file_prefix = 'benchmark_pairs_'
+lsh_pair_file = '../outputs/pairs.txt'
+benchmarking_folder = '../outputs'
 
 max_recall = 80 
 max_precision = 5
@@ -77,9 +72,9 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
                 # if plagiarized_ratio_benchmarking > 0:
                 #     ratio = 100 * (plagiarized_ratio_lsh / plagiarized_ratio_benchmarking)
 
-                print_all = False
+                print_all = True 
 
-                if print_all or (recall > 80 and precision > 20):
+                if print_all or (recall > 90 and precision > 80):
                     print("K:                       " + str(lsh_K))
                     print("P:                       " + str(lsh_P))
                     print("H:                       " + str(lsh_H))
@@ -87,5 +82,6 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
                     print("Num LSH pairs:           " + str(len(lsh_pairs)))
                     print(f"Recall:                  {round(recall, 3)}%")
                     print(f"Precision:               {round(precision, 3)}%")
+                    # print_diff_pairs(benchmarking_pairs, lsh_pairs)
                     print('\n')
 

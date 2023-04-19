@@ -24,24 +24,23 @@ def parse_cmd_line(args):
 
     configs = {
         'compute_benchmarking': False,
+        'time_test': False,
+        'accuracy_test': False,
+        'test_params': False,
         'k': '5',
-        'num_hash_functions': '10',
-        'partition_length': '1',
+        'h': '10',
+        'p': '1',
         'document_folder': 'DOCUMENTS/all_docs',
-        'hash_table_file': 'outputs/hash_table.txt',
-        'pair_file': 'outputs/pairs.txt',
-        'benchmarking_file_add_on': '',
-        'test_params': True,
-        'print_lsh': False,
+        'max_files': 10000,
     }
 
     for arg in args[1:]:
         if arg.startswith("--k="):
             configs['k'] = arg.split("=")[1]
         elif arg.startswith("--h="):
-            configs['num_hash_functions'] = arg.split("=")[1]
+            configs['h'] = arg.split("=")[1]
         elif arg.startswith("--p="):
-            configs['partition_length'] = arg.split("=")[1]
+            configs['p'] = arg.split("=")[1]
         elif arg.startswith("--d="):
             configs['document_folder'] = arg.split("=")[1]
         elif arg.startswith("--b"):
@@ -49,10 +48,10 @@ def parse_cmd_line(args):
             if 'yes' in response:
                 configs['compute_benchmarking'] = True
                 clear_output_folder()
-        elif arg.startswith("--o="):
-            configs['hash_table_file'] = f"outputs/hash_table_{arg.split('=')[1]}.txt"
-            configs['pair_file'] = f"outputs/pairs_{arg.split('=')[1]}.txt"
-            configs['benchmarking_file_add_on'] = f"{arg.split('=')[1]}"
+        elif arg.startswith("--t"):
+            configs['time_test'] = True
+        elif arg.startswith("--a"):
+            configs['accuracy_test'] = True
 
     return configs
 
@@ -60,37 +59,38 @@ def parse_cmd_line(args):
 def run_lsh(configs):
     my_timer = Timer("LSH")
     my_timer.start()
-    subprocess.run(["./test", configs['k'], configs['num_hash_functions'], configs['partition_length'], configs['document_folder'], configs['hash_table_file']])
-    subprocess.run(["python3", "file_conversion.py", configs['hash_table_file'], configs['pair_file']], cwd="python_helpers")
+    subprocess.run(["./test", configs['k'], configs['h'], configs['p'], configs['document_folder'], configs['max_files']])
+    subprocess.run(["python3", "file_conversion.py", 'outputs/hash_table.txt', 'outputs/pairs.txt'], cwd="python_helpers")
     my_timer.stop()
-    # my_timer.print_elapsed_time()
+    my_timer.print_elapsed_time()
 
 def run_benchmarking(configs):
     benchmarking_timer = Timer("Benchmarking")
     benchmarking_timer.start()
-    subprocess.run(["python3", "benchmarking.py", configs['k'], configs['document_folder'], configs['benchmarking_file_add_on']], cwd="python_helpers")
+    subprocess.run(["python3", "benchmarking.py", configs['k'], configs['document_folder'], configs['max_files']], cwd="python_helpers")
     benchmarking_timer.stop()
     benchmarking_timer.print_elapsed_time()
 
 def compute_accuracy(configs):
-    subprocess.run(["python3", "compute_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], configs['num_hash_functions'], configs['partition_length'], str(-1)], cwd="python_helpers")
+    subprocess.run(["python3", "compute_accuracy.py", configs['k'], configs['h'], configs['p']], cwd="python_helpers")
 
 def compute_and_print_accuracy(configs):
-    result = subprocess.run(["python3", "print_accuracy.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], configs['num_hash_functions'], configs['partition_length'], str(-1)], cwd="python_helpers", capture_output=True, text=True)
+    result = subprocess.run(["python3", "print_accuracy.py", configs['k'], configs['h'], configs['p']], cwd="python_helpers", capture_output=True, text=True)
     output_list = result.stdout.strip().split('\n')
     return output_list
+
 def compute_and_print_efficiency(configs):
-    subprocess.run(["python3", "print_efficiency.py", configs['pair_file'], configs['benchmarking_file_add_on'], configs['k'], configs['num_hash_functions'], configs['partition_length'], str(-1)], cwd="python_helpers")
+    subprocess.run(["python3", "print_efficiency.py", configs['k'], configs['h'], configs['p']], cwd="python_helpers")
 
 def find_good_params(configs):
 
-    start_k = 20 
+    start_k = 161 
     k_step = 1
-    end_k = 100 
+    end_k = 200 
 
     start_h = 20
     h_step = 1
-    end_h = 21
+    end_h = 50
     
     start_p = 1
     p_step = 1
@@ -114,9 +114,9 @@ def print_accuracy(configs):
         # for k in range(100, 150):
             # for h in range(15, 25, 1):
             for k in range(125, 175):
-                configs['partition_length'] = str(1)
+                configs['p'] = str(1)
                 configs['k'] = str(k)
-                configs['num_hash_functions'] = str(h)
+                configs['h'] = str(h)
                 run_lsh(configs)
                 output_list = compute_and_print_accuracy(configs)
                 writer.writerow(output_list)
@@ -124,12 +124,34 @@ def print_accuracy(configs):
 
 def print_efficiency(configs):
     k = 6
-    h = 10
+    start_num_docs = 20 
+    end_num_docs = 160
+    num_docs_step = 20
 
-    for N in range(500):
+    # Running with values we expect will be closer to what we will actually report with
+    lsh_k = 100
+    h = 25
+
+    for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
+        print(str(num_docs))
+    
+    print(',')
+
+    for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
         configs['k'] = str(k)
-        configs['num_hash_functions'] = str(h)
+        configs['max_files'] = str(num_docs)
+        run_benchmarking(configs)
+
+    print(',')
+
+    for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
+        configs['k'] = str(lsh_k)
+        configs['max_files'] = str(num_docs)
+        configs['h'] = str(h)
         run_lsh(configs)
+
+
+
 
 # MAIN
 configs = parse_cmd_line(sys.argv)
@@ -140,12 +162,12 @@ if configs['compute_benchmarking']:
 if configs['test_params']:
     find_good_params(configs)
 
-# ACCURACY STUFF
-# print_accuracy(configs)
-# run_lsh(configs)
+if configs['time_test']:
+    print_efficiency(configs)
 
-#EFFICIENCY
-# print_efficiency(configs)
+if configs['accuracy_test']:
+    print_accuracy(configs)
+
 
 
 

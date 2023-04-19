@@ -21,8 +21,6 @@ def compare_files(file1, file2, k):
         text2 = f2.read()
     k_grams1 = get_k_grams(text1, k)
     k_grams2 = get_k_grams(text2, k)
-    # print(k_grams1)
-    # print(k_grams2)
 
     common_k_grams = k_grams1 & k_grams2
     union_k_grams = k_grams1 | k_grams2
@@ -49,30 +47,13 @@ def remove_newlines(folder_path):
 
 LSH_k = int(sys.argv[1])
 folder = f"../{sys.argv[2]}"
-file_add_on = sys.argv[3]
-
-if not file_add_on:
-    file_add_on ='_'
-else:
-    file_add_on = '_' + file_add_on + '_'
-
-# print('Benchmarking from folder: ' + folder)
-# print('K:                        ' + str(k))
-# print('File add on:              ' + file_add_on)
+max_files = int(sys.argv[3])
 
 threshold = 0.1
 
-prefix = "../outputs/benchmark_pairs" + file_add_on
-print("Benchmarking files:       " + str(prefix))
+folders = [ folder ]
 
-folders = [
-    # '../DOCUMENTS/chatGPT',
-    # '../DOCUMENTS/paraphrased_output_docs',
-    # '../DOCUMENTS/wikipedia_documents',
-    # '../DOCUMENTS/all_docs'
-    folder
-]
-
+prefix = "../outputs/benchmark_pairs_"
 filename = prefix + str(LSH_k) + ".txt"
 with open(filename, 'w') as f:
     all_files = []
@@ -80,7 +61,10 @@ with open(filename, 'w') as f:
     for folder in folders:
         folder_files = [os.path.join(folder, file) for file in os.listdir(folder)]
         all_files += folder_files
-    print(len(all_files))
+    # print(len(all_files))
+    all_files = all_files[:max_files]
+    # print("Testing " + str(len(all_files)) + " files")
+    # print("Testing " + str(max_files) + " files")
     similarities = compare_all_files(all_files, LSH_k)
     max_similarity = max(similarities.keys())
 

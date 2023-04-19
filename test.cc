@@ -36,6 +36,7 @@ int main(int argc, char *argv[]){
     int partition_length = 3;
     string document_folder = "documents";
     string output_file = "outputs/hash_table.txt";
+    int max_docs = 10000;
 
     if(argc == 2)
     {
@@ -65,7 +66,7 @@ int main(int argc, char *argv[]){
         num_hash_functions = atoi(argv[2]);
         partition_length = atoi(argv[3]);
         document_folder = argv[4];
-        output_file = argv[5];
+        max_docs = atoi(argv[5]);
     }
 
     // cout << endl;
@@ -78,6 +79,9 @@ int main(int argc, char *argv[]){
     // cout << endl;
 
     vector<string> file_names = get_files_in_dir(document_folder);
+    file_names.resize(max_docs);
+
+    // cout << "Testing: " << file_names.size() << " files " << endl;
 
     PlagiarismDetection * pd = new PlagiarismDetection(chars_per_k_gram, num_hash_functions, partition_length, file_names);
 
