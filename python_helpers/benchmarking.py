@@ -6,10 +6,11 @@ import sys
 
 def get_k_grams(text, k):
     k_grams = set()
+    sliding_window = 2
 
     # Don't go out of bounds for an extra k gram
     final_char_index = len(text) - k + 1
-    for i in range(0, final_char_index, k):
+    for i in range(0, final_char_index, sliding_window):
         k_gram = text[i:i + k]
         k_grams.add(k_gram.lower())
     return k_grams

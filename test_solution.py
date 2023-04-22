@@ -95,6 +95,7 @@ def find_good_params(configs):
     p_step = 1
     end_p = 4
 
+
     for k in range(start_k, end_k, k_step):
         print('K: ' + str(k))
         for h in range(start_h, end_h, h_step):

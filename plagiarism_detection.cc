@@ -71,7 +71,10 @@ class PlagiarismDetection {
             {
                 string contents = read_file_contents(filename);
                 set<string> k_grams;
-                for (int i = 0; i < (int) contents.length() - this->K; i += this->K){
+                int sliding_window = 4;
+                // The dog
+                // Thed, hedo, 
+                for (int i = 0; i < (int) contents.length() - this->K; i += sliding_window){
                     string sub = contents.substr(i, this->K);
                     transform(sub.begin(), sub.end(), sub.begin(), ::tolower);
                     // cout << sub << endl;
