@@ -79,3 +79,9 @@ DOCUMENTS/all_docs/ChatD8.txt
 DOCUMENTS/all_docs/ChatD8.txt
 DOCUMENTS/all_docs/ChatD9.txt
 
+DOCUMENTS/all_docs/D-42.txt
+DOCUMENTS/all_docs/D-177.txt
+
+DOCUMENTS/all_docs/D-284.txt
+DOCUMENTS/all_docs/D-348.txt
+

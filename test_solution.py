@@ -11,15 +11,6 @@ def clear_output_folder():
         if os.path.isfile(file_path):
             os.unlink(file_path)
 
-def count_files(path):
-    file_list = os.listdir(path)
-    file_list = [f for f in file_list if os.path.isfile(os.path.join(path, f))]
-    return len(file_list)
-
-# def get_possible_combinations(configs):
-#     num_files = count_files(configs['document_folder'])
-#     return num_files * (num_files - 1)
-
 def parse_cmd_line(args):
 
     configs = {
@@ -31,7 +22,7 @@ def parse_cmd_line(args):
         'h': '10',
         'p': '1',
         'document_folder': 'DOCUMENTS/all_docs',
-        'max_files': 10000,
+        'max_files': '10000',
     }
 
     for arg in args[1:]:
@@ -107,6 +98,7 @@ def find_good_params(configs):
                 compute_accuracy(configs)
 
 def print_accuracy(configs):
+    print('Printing accuracy code')
     with open('accuracy_results.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['K', 'H', 'Recall', 'Precision'])
@@ -123,26 +115,27 @@ def print_accuracy(configs):
 
 
 def print_efficiency(configs):
+    print('Printing efficiency code')
     k = 6
     start_num_docs = 20 
-    end_num_docs = 160
+    end_num_docs = 400
     num_docs_step = 20
 
     # Running with values we expect will be closer to what we will actually report with
     lsh_k = 100
-    h = 25
+    h = 100
 
-    for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
-        print(str(num_docs))
+    # for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
+    #     print(str(num_docs))
     
-    print(',')
+    # print(',')
 
-    for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
-        configs['k'] = str(k)
-        configs['max_files'] = str(num_docs)
-        run_benchmarking(configs)
+    # for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
+    #     configs['k'] = str(k)
+    #     configs['max_files'] = str(num_docs)
+    #     run_benchmarking(configs)
 
-    print(',')
+    # print(',')
 
     for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
         configs['k'] = str(lsh_k)
