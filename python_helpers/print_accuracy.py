@@ -43,7 +43,7 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
         for filename in filenames:
             # print(filename)
             # if benchmarking_file_prefix in filename and str(lsh_K) in filename:
-            if benchmarking_file_prefix in filename:
+            if 'test_docs' in filename:
                 file_path = os.path.join(dirpath, filename)
 
                 benchmarking_pairs = read_pairs_file(file_path)

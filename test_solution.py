@@ -46,6 +46,8 @@ def parse_cmd_line(args):
             configs['test_large_doc_set'] = True
         elif arg.startswith("--a"):
             configs['accuracy_test'] = True
+        elif arg.startswith("--params"):
+            configs['test_params'] = True
 
     return configs
 
@@ -57,6 +59,9 @@ def run_lsh(configs):
     subprocess.run(["python3", "file_conversion.py", 'outputs/hash_table.txt', 'outputs/pairs.txt'], cwd="python_helpers")
     my_timer.stop()
     my_timer.print_elapsed_time()
+
+def benchmark_test_files(configs):
+    subprocess.run(["python3", "benchmarking.py", configs['k'], configs['document_folder'], configs['max_files'], "Unused arg"], cwd="python_helpers")
 
 def run_benchmarking(configs):
     benchmarking_timer = Timer("Benchmarking")
@@ -94,9 +99,9 @@ def find_good_params(configs):
         print('K: ' + str(k))
         for h in range(start_h, end_h, h_step):
             for p in range(start_p, end_p, p_step):
-                configs['partition_length'] = str(p)
+                configs['p'] = str(p)
                 configs['k'] = str(k)
-                configs['num_hash_functions'] = str(h)
+                configs['h'] = str(h)
                 run_lsh(configs)
                 compute_accuracy(configs)
 
@@ -174,7 +179,7 @@ def print_efficiency_lsh(configs):
 configs = parse_cmd_line(sys.argv)
 
 if configs['compute_benchmarking']:
-    run_benchmarking(configs)
+    benchmark_test_files(configs)
     run_lsh(configs)
 
 if configs['test_params']:

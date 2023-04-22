@@ -57,7 +57,7 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
     # if plagiarized_ratio_lsh < 10:
         for filename in filenames:
             # if benchmarking_file_prefix in filename and str(lsh_K) in filename:
-            if benchmarking_file_prefix in filename:
+            if 'test_docs' in filename:
                 file_path = os.path.join(dirpath, filename)
 
                 benchmarking_pairs = read_pairs_file(file_path)
@@ -71,15 +71,15 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
                 # ratio = 0
                 # if plagiarized_ratio_benchmarking > 0:
                 #     ratio = 100 * (plagiarized_ratio_lsh / plagiarized_ratio_benchmarking)
+                print(filename)
 
-                print_all = True 
 
-                if print_all or (recall > 90 and precision > 80):
+                if recall > 90 and precision > 75:
                     print("K:                       " + str(lsh_K))
                     print("P:                       " + str(lsh_P))
                     print("H:                       " + str(lsh_H))
-                    print("Num benchmarking pairs:  " + str(len(benchmarking_pairs)))
-                    print("Num LSH pairs:           " + str(len(lsh_pairs)))
+                    # print("Num benchmarking pairs:  " + str(len(benchmarking_pairs)))
+                    # print("Num LSH pairs:           " + str(len(lsh_pairs)))
                     print(f"Recall:                  {round(recall, 3)}%")
                     print(f"Precision:               {round(precision, 3)}%")
                     # print_diff_pairs(benchmarking_pairs, lsh_pairs)

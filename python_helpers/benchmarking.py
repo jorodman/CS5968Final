@@ -48,23 +48,20 @@ def remove_newlines(folder_path):
 LSH_k = int(sys.argv[1])
 folder = f"../{sys.argv[2]}"
 max_files = int(sys.argv[3])
-prefix = "../outputs/benchmark_pairs_" + str(max_files) + "_" 
+
+filename = ''
+
+if len(sys.argv) > 4:
+    filename ='../outputs/benchmark_test_docs.txt'
+else:
+    filename = "../outputs/benchmark_pairs_" + str(max_files) + ".txt"
+
 
 threshold = 0.1
 
-folders = [ folder ]
-
-filename = prefix + str(LSH_k) + ".txt"
 with open(filename, 'w') as f:
-    all_files = []
-
-    for folder in folders:
-        folder_files = [os.path.join(folder, file) for file in os.listdir(folder)]
-        all_files += folder_files
-    # print(len(all_files))
-    all_files = all_files[:max_files]
-    # print("Testing " + str(len(all_files)) + " files")
-    # print("Testing " + str(max_files) + " files")
+    files = [os.path.join(folder, file) for file in os.listdir(folder)]
+    all_files = files[:max_files]
     similarities = compare_all_files(all_files, LSH_k)
     max_similarity = max(similarities.keys())
 
