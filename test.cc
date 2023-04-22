@@ -80,7 +80,6 @@ int main(int argc, char *argv[]){
 
     vector<string> file_names = get_files_in_dir(document_folder);
     file_names.resize(max_docs);
-    cout << "File size: " << file_names.size() << endl;
 
     // cout << "Testing: " << file_names.size() << " files " << endl;
 
