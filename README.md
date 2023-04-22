@@ -6,17 +6,13 @@ There is a lot going on with our project, between our algorithm file, c++ test f
 
 The output of benchmarking on DOCUMENTS/test_docs, a set of four chatGPT files, 30 paraphrased files, and 100 wikipedia files, is safed to outputs/benchmarking_pairs.txt. You can run the program test_solution.py with no paramaters and it will pull from that benchmarking file to compare to our algorithm with either the default params (k=5, h=10, and p=1) or your input params using --k=5, --h=10, and --p=1 (replace with whatever you want). Using the --b flag will run benchmarking again on either the folder DOCUMENTS/test_docs or whatever folder you provide to the --d flag.
 
-Here is a sample command that will print the precision and recall of our program for varying values of K and H:
+Here is a sample command that will print the precision and recall of our program for varying values of K and H using the pre benchmarked output:
 
-python3 test_solution.py
+python3 test_solution.py --params
 
 To test the efficiency of our program vs the benchmarking program, run with the flag --t. The output is the The command is as follow:
  
 python3 test_solution.py --t
-
-To run our program on a larger data set, run the following:
-
-python3 test_solution.py --l
 
 
 Project Structure: The logic for our core algorithm is in plagiarism_detection.cc. The flow of the algorithm is in the run() function:

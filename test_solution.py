@@ -42,7 +42,7 @@ def parse_cmd_line(args):
                 # clear_output_folder()
         elif arg.startswith("--t"):
             configs['time_test'] = True
-        elif arg.startswith("--l"):
+        elif arg.startswith("--large_set"):
             configs['test_large_doc_set'] = True
         elif arg.startswith("--a"):
             configs['accuracy_test'] = True
@@ -155,18 +155,16 @@ def print_efficiency(configs):
 def print_efficiency_lsh(configs):
     print('Printing efficiency code for lsh')
     start_num_docs = 50 
-    end_num_docs = 10000
+    end_num_docs = 3000
     num_docs_step = 50
+    configs['document_folder'] = 'DOCUMENTS/many_output_docs'
 
     # Running with values we expect will be closer to what we will actually report with
     lsh_k = 100
     h = 100
 
-    print('Printing num docs')
     for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
-        print(str(num_docs))
-
-    for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
+        print('Num docs: ' + str(num_docs))
         configs['k'] = str(lsh_k)
         configs['max_files'] = str(num_docs)
         configs['h'] = str(h)
