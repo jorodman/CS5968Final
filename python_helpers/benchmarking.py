@@ -48,12 +48,12 @@ def remove_newlines(folder_path):
 LSH_k = int(sys.argv[1])
 folder = f"../{sys.argv[2]}"
 max_files = int(sys.argv[3])
+prefix = "../outputs/benchmark_pairs_" + str(max_files) + "_" 
 
 threshold = 0.1
 
 folders = [ folder ]
 
-prefix = "../outputs/benchmark_pairs_"
 filename = prefix + str(LSH_k) + ".txt"
 with open(filename, 'w') as f:
     all_files = []

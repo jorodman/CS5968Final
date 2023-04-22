@@ -1,6 +1,24 @@
 # CS5968Final
 Final project for CS5968 - Data structures &amp; algorithms for scalable computing
 
+What you need to know to run out program:
+There is a lot going on with our project, between our algorithm file, c++ test file, python test file, python helper files, c++ helpers, folders with documents, and text files with saved outputs. Below I've provided a high level overview of what each of the files is responsible for and you can go through that if you'd like, but the repo is in a state where you can test things without running very many steps. Here is what you can do:
+
+The output of benchmarking on DOCUMENTS/test_docs, a set of four chatGPT files, 30 paraphrased files, and 100 wikipedia files, is safed to outputs/benchmarking_pairs.txt. You can run the program test_solution.py with no paramaters and it will pull from that benchmarking file to compare to our algorithm with either the default params (k=5, h=10, and p=1) or your input params using --k=5, --h=10, and --p=1 (replace with whatever you want). Using the --b flag will run benchmarking again on either the folder DOCUMENTS/test_docs or whatever folder you provide to the --d flag.
+
+Here is a sample command that will print the precision and recall of our program for varying values of K and H:
+
+python3 test_solution.py
+
+To test the efficiency of our program vs the benchmarking program, run with the flag --t. The output is the The command is as follow:
+ 
+python3 test_solution.py --t
+
+To run our program on a larger data set, run the following:
+
+python3 test_solution.py --l
+
+
 Project Structure: The logic for our core algorithm is in plagiarism_detection.cc. The flow of the algorithm is in the run() function:
 - Make the k grams from a given list of files names
 - Compute the min hash values of each document's k grams using the input number of hash functions

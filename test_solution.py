@@ -21,8 +21,9 @@ def parse_cmd_line(args):
         'k': '5',
         'h': '10',
         'p': '1',
-        'document_folder': 'DOCUMENTS/all_docs',
+        'document_folder': 'DOCUMENTS/test_docs',
         'max_files': '10000',
+        'test_large_doc_set': False,
     }
 
     for arg in args[1:]:
@@ -38,9 +39,11 @@ def parse_cmd_line(args):
             response = input('Are you sure you want to compute benchmarking? It will take a couple of minutes... (yes or no)\n')
             if 'yes' in response:
                 configs['compute_benchmarking'] = True
-                clear_output_folder()
+                # clear_output_folder()
         elif arg.startswith("--t"):
             configs['time_test'] = True
+        elif arg.startswith("--l"):
+            configs['test_large_doc_set'] = True
         elif arg.startswith("--a"):
             configs['accuracy_test'] = True
 
@@ -75,13 +78,13 @@ def compute_and_print_efficiency(configs):
 
 def find_good_params(configs):
 
-    start_k = 161 
-    k_step = 1
-    end_k = 200 
+    start_k = 20 
+    k_step = 5
+    end_k = 100 
 
-    start_h = 20
-    h_step = 1
-    end_h = 50
+    start_h = 10
+    h_step = 5
+    end_h = 30
     
     start_p = 1
     p_step = 1
@@ -115,27 +118,48 @@ def print_accuracy(configs):
 
 
 def print_efficiency(configs):
-    print('Printing efficiency code')
+    print('Printing efficiency code comparison between benchmarking and LSH')
     k = 6
     start_num_docs = 20 
     end_num_docs = 400
     num_docs_step = 20
 
+
+    print('Printing num docs')
+    for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
+        print(str(num_docs))
+
+    print("Printing benchmarking time")
+    for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
+        configs['k'] = str(k)
+        configs['max_files'] = str(num_docs)
+        run_benchmarking(configs)
+
     # Running with values we expect will be closer to what we will actually report with
     lsh_k = 100
     h = 100
 
-    # for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
-    #     print(str(num_docs))
-    
-    # print(',')
+    print("Printing LSH time")
+    for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
+        configs['k'] = str(lsh_k)
+        configs['max_files'] = str(num_docs)
+        configs['h'] = str(h)
+        run_lsh(configs)
 
-    # for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
-    #     configs['k'] = str(k)
-    #     configs['max_files'] = str(num_docs)
-    #     run_benchmarking(configs)
 
-    # print(',')
+def print_efficiency_lsh(configs):
+    print('Printing efficiency code for lsh')
+    start_num_docs = 50 
+    end_num_docs = 10000
+    num_docs_step = 50
+
+    # Running with values we expect will be closer to what we will actually report with
+    lsh_k = 100
+    h = 100
+
+    print('Printing num docs')
+    for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
+        print(str(num_docs))
 
     for num_docs in range(start_num_docs, end_num_docs, num_docs_step):
         configs['k'] = str(lsh_k)
@@ -151,12 +175,16 @@ configs = parse_cmd_line(sys.argv)
 
 if configs['compute_benchmarking']:
     run_benchmarking(configs)
+    run_lsh(configs)
 
 if configs['test_params']:
     find_good_params(configs)
 
 if configs['time_test']:
     print_efficiency(configs)
+
+if configs['test_large_doc_set']:
+    print_efficiency_lsh(configs)
 
 if configs['accuracy_test']:
     print_accuracy(configs)
