@@ -46,8 +46,6 @@ benchmarking_file_prefix = 'benchmark_pairs_'
 lsh_pair_file = '../outputs/pairs.txt'
 benchmarking_folder = '../outputs'
 
-max_recall = 80 
-max_precision = 5
 
 lsh_pairs = read_pairs_file(lsh_pair_file)
 # plagiarized_ratio_lsh = 100 * (len(lsh_pairs)/num_possible_combos)
@@ -71,10 +69,9 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
                 # ratio = 0
                 # if plagiarized_ratio_benchmarking > 0:
                 #     ratio = 100 * (plagiarized_ratio_lsh / plagiarized_ratio_benchmarking)
-                print(filename)
 
 
-                if recall > 90 and precision > 75:
+                if recall > 90 and precision > 60:
                     print("K:                       " + str(lsh_K))
                     print("P:                       " + str(lsh_P))
                     print("H:                       " + str(lsh_H))
