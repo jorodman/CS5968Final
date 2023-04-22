@@ -71,7 +71,7 @@ for dirpath, dirnames, filenames in os.walk(benchmarking_folder):
                 #     ratio = 100 * (plagiarized_ratio_lsh / plagiarized_ratio_benchmarking)
 
 
-                if recall > 90 and precision > 60:
+                if recall > 50 and precision > 0:
                     print("K:                       " + str(lsh_K))
                     print("P:                       " + str(lsh_P))
                     print("H:                       " + str(lsh_H))
